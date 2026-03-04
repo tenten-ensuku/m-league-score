@@ -30,27 +30,19 @@
 
     /* ===== HEADER ===== */
     .hero {
-      background: linear-gradient(160deg, #050a14 0%, #0d1a30 60%, #070c18 100%);
-      border-bottom: 1px solid var(--border);
+      background: #fff;
+      border-bottom: 1px solid #ddd;
       padding: 36px 24px 28px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px);
-    }
     .hero-inner { position: relative; }
     .hero-badge {
       display: inline-block;
-      background: rgba(245,197,24,0.12);
-      border: 1px solid rgba(245,197,24,0.4);
-      color: var(--gold);
+      background: rgba(184,134,11,0.1);
+      border: 1px solid rgba(184,134,11,0.4);
+      color: #b8860b;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 4px;
@@ -66,7 +58,7 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-sub { color: var(--muted); font-size: 0.9rem; letter-spacing: 2px; }
+    .hero-sub { color: #555; font-size: 0.9rem; letter-spacing: 2px; }
 
     /* ===== NAV ===== */
     .nav {
