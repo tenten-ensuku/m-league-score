@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:kinmaweb.jp)",
+      "WebSearch",
+      "WebFetch(domain:mleaguewatch.com)",
+      "WebFetch(domain:riichi.wiki)",
+      "WebFetch(domain:mleaguewatch.wordpress.com)",
+      "WebFetch(domain:m-league.jp)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:en.namu.wiki)",
+      "Bash(node:*)",
+      "WebFetch(domain:mj-news.net)",
+      "WebFetch(domain:ja.wikipedia.org)",
+      "Bash(git:*)"
+    ]
+  }
+}

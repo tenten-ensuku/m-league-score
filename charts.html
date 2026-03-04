@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mリーグ ドラフト 推移グラフ</title>
+  <style>
+    :root {
+      --bg: #070c18;
+      --card: #111d33;
+      --border: #1e2d4a;
+      --gold: #f5c518;
+      --text: #e8edf5;
+      --muted: #6b7a96;
+      --ten:  #818cf8;
+      --aji:  #f87171;
+      --sat:  #4ade80;
+      --ten-fill: rgba(129,140,248,0.12);
+      --aji-fill: rgba(248,113,113,0.12);
+      --sat-fill: rgba(74,222,128,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .hero {
+      background: linear-gradient(160deg, #050a14 0%, #0d1a30 60%, #070c18 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 24px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px);
+    }
+    .hero-inner { position: relative; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,197,24,0.12);
+      border: 1px solid rgba(245,197,24,0.4);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: 5px;
+      background: linear-gradient(90deg, #b8860b 0%, #f5c518 30%, #fff8dc 50%, #f5c518 70%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .hero-sub { color: var(--muted); font-size: 0.9rem; letter-spacing: 2px; }
+
+    /* ===== NAV ===== */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: #0a1020;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .nav a:hover { color: var(--text); border-color: var(--muted); }
+    .nav a.active {
+      background: rgba(245,197,24,0.12);
+      border-color: rgba(245,197,24,0.5);
+      color: var(--gold);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 36px 20px 60px; }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .section-header::before {
+      content: '';
+      width: 4px; height: 22px;
+      background: linear-gradient(to bottom, var(--gold), rgba(245,197,24,0.3));
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+    }
+
+    /* ===== SUMMARY CARDS ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 20px 22px;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+
+    .card-team {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .card-dot.ten { background: var(--ten); box-shadow: 0 0 8px var(--ten); }
+    .card-dot.aji { background: var(--aji); box-shadow: 0 0 8px var(--aji); }
+    .card-dot.sat { background: var(--sat); box-shadow: 0 0 8px var(--sat); }
+
+    .card-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+    .card-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; }
+    .card-val { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .card-val.big { font-size: 1.5rem; }
+    .pos { color: #4ade80; }
+    .neg { color: #f87171; }
+    .zer { color: var(--muted); }
+
+    .card-diff {
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== CHART CARD ===== */
+    .chart-card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 28px 24px 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .chart-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chart-title .badge {
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.3);
+      color: var(--gold);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .chart-wrap { position: relative; height: 360px; }
+
+    /* ===== LEGEND ===== */
+    .legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    .legend-line {
+      width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ===== DATA TABLE ===== */
+    .data-section { margin-top: 50px; }
+    .table-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.4);
+      overflow-x: auto;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr {
+      background: linear-gradient(90deg, #0d1a30, #0a1422);
+      border-bottom: 1px solid rgba(245,197,24,0.3);
+    }
+    th {
+      padding: 12px 16px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 2px;
+      color: var(--gold); text-transform: uppercase;
+      white-space: nowrap; text-align: right;
+    }
+    th:first-child { text-align: center; }
+    tbody tr {
+      background: var(--card);
+      border-bottom: 1px solid rgba(30,45,74,0.7);
+      transition: background 0.15s;
+    }
+    tbody tr:last-child { background: linear-gradient(90deg, rgba(245,197,24,0.06), var(--card)); }
+    tbody tr:hover { background: rgba(245,197,24,0.04); }
+    tbody tr:last-child { border-bottom: none; }
+    td {
+      padding: 10px 16px; font-size: 0.82rem;
+      text-align: right; white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    td:first-child { text-align: center; color: var(--muted); font-size: 0.8rem; }
+    .col-ten { color: var(--ten); font-weight: 600; }
+    .col-aji { color: var(--aji); font-weight: 600; }
+    .col-sat { color: var(--sat); font-weight: 600; }
+    .col-bk  { font-weight: 700; }
+    .sep { border-left: 1px solid var(--border); }
+
+    /* ===== UPDATED ===== */
+    .updated-note {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+      .chart-wrap { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">2025 - 2026 Season</div>
+    <h1>DRAFT CHART</h1>
+    <div class="hero-sub">ドラフトチーム PT・収支 推移グラフ</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="index.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+      <line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1.5" fill="currentColor"/>
+      <circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="3" cy="18" r="1.5" fill="currentColor"/>
+    </svg>
+    個人ランキング
+  </a>
+  <a href="charts.html" class="active">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>
+    推移グラフ
+  </a>
+</nav>
+
+<div class="container">
+
+  <!-- サマリーカード -->
+  <div class="section-header"><span class="section-title">Current Status</span></div>
+  <div class="cards" id="cards"></div>
+
+  <!-- PT推移グラフ -->
+  <div class="section-header"><span class="section-title">PT History</span></div>
+  <div class="chart-card">
+    <div class="chart-title">
+      合計PT 推移
+      <span class="badge">REGULAR SEASON</span>
+    </div>
+    <div class="chart-wrap"><canvas id="pt-chart"></canvas></div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-line" style="background:var(--ten)"></div>チームてん</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--aji)"></div>チームあじ</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--sat)"></div>チームさとし</div>
+    </div>
+  </div>
+
+  <!-- 収支推移グラフ -->
+  <div class="section-header"><span class="section-title">Balance History</span></div>
+  <div class="chart-card">
+    <div class="chart-title">
+      収支推移
+      <span class="badge">2×自PT − 他2チームPT</span>
+    </div>
+    <div class="chart-wrap"><canvas id="bk-chart"></canvas></div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-line" style="background:var(--ten)"></div>チームてん</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--aji)"></div>チームあじ</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--sat)"></div>チームさとし</div>
+    </div>
+  </div>
+
+  <!-- データテーブル -->
+  <div class="data-section">
+    <div class="section-header"><span class="section-title">Data Log</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th style="color:#818cf8">てん PT</th>
+            <th style="color:#818cf8">てん 収支</th>
+            <th style="color:#f87171" class="sep">あじ PT</th>
+            <th style="color:#f87171">あじ 収支</th>
+            <th style="color:#4ade80" class="sep">さとし PT</th>
+            <th style="color:#4ade80">さとし 収支</th>
+          </tr>
+        </thead>
+        <tbody id="data-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="updated-note" id="updated-note"></div>
+
+</div>
+
+<!-- Chart.js: ローカル優先 → CDN フォールバック -->
+<script src="chart.min.js" onerror="
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js';
+  document.head.appendChild(s);
+"></script>
+<!-- 履歴データ -->
+<script src="history.js"></script>
+
+<script>
+// ★ 変数名を chartData にして window.history との衝突を回避
+const chartData = window.MLEAGUE_HISTORY || [];
+
+// ─── ヘルパー ────────────────────────────────────────────────────
+function fmt(v, decimals = 1) {
+  if (v == null) return '—';
+  const s = Math.abs(v).toFixed(decimals);
+  return v >= 0 ? `+${s}` : `▲${s}`;
+}
+function fmtPT(v) { return fmt(v, 1); }
+function fmtBK(v) { return fmt(v, 1); }
+function cls(v)   { return v == null ? 'zer' : v > 0 ? 'pos' : v < 0 ? 'neg' : 'zer'; }
+
+// ─── サマリーカード ──────────────────────────────────────────────
+if (chartData.length) {
+  const last = chartData[chartData.length - 1];
+  const prev = chartData[chartData.length - 2];
+
+  const teams = [
+    { name: 'チームてん',   dotCls: 'ten', ptKey: 'ten_pt', bkKey: 'ten_bk' },
+    { name: 'チームあじ',   dotCls: 'aji', ptKey: 'aji_pt', bkKey: 'aji_bk' },
+    { name: 'チームさとし', dotCls: 'sat', ptKey: 'sat_pt', bkKey: 'sat_bk' },
+  ];
+
+  const cardsEl = document.getElementById('cards');
+  teams.forEach(t => {
+    const pt     = last ? last[t.ptKey] : null;
+    const bk     = last ? last[t.bkKey] : null;
+    const prevPt = prev ? prev[t.ptKey] : null;
+    const diff   = (pt != null && prevPt != null) ? pt - prevPt : null;
+    const diffHtml = diff != null
+      ? `<span class="card-diff ${cls(diff)}">${diff >= 0 ? '↑' : '↓'} ${Math.abs(diff).toFixed(1)}</span>`
+      : '';
+    cardsEl.innerHTML += `
+      <div class="card">
+        <div class="card-team"><div class="card-dot ${t.dotCls}"></div>${t.name}</div>
+        <div class="card-row">
+          <span class="card-label">合計PT</span>
+          <span class="card-val big ${cls(pt)}">${pt != null ? Math.abs(pt).toFixed(1) : '—'}${diffHtml}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">収支</span>
+          <span class="card-val ${cls(bk)}">${fmtBK(bk)}</span>
+        </div>
+      </div>`;
+  });
+}
+
+// ─── Chart.js チェック & グラフ描画 ─────────────────────────────
+function renderCharts() {
+  if (typeof Chart === 'undefined') {
+    ['pt-chart','bk-chart'].forEach(id => {
+      document.getElementById(id).parentElement.innerHTML =
+        '<div style="text-align:center;padding:60px 20px;color:#f87171;font-size:0.85rem">' +
+        'Chart.js の読み込みに失敗しました。<br>インターネット接続を確認するか、update.bat を実行してください。</div>';
+    });
+    return;
+  }
+  if (!chartData.length) {
+    ['pt-chart','bk-chart'].forEach(id => {
+      document.getElementById(id).parentElement.innerHTML =
+        '<div style="text-align:center;padding:60px 20px;color:#6b7a96;font-size:0.85rem">' +
+        'データがありません。update.bat を実行してください。</div>';
+    });
+    return;
+  }
+
+  Chart.defaults.color = '#6b7a96';
+  Chart.defaults.font.family = "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif";
+
+  const labels = chartData.map(d => d.date);
+
+  // ★ makeGradient: RGB を直接受け取り、正しい rgba 文字列を生成
+  function makeGradient(ctx, r, g, b) {
+    const h = ctx.canvas.parentElement.clientHeight || 360;
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, `rgba(${r},${g},${b},0.28)`);
+    grad.addColorStop(1, `rgba(${r},${g},${b},0.02)`);
+    return grad;
+  }
+
+  const chartOpts = () => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#111d33',
+        borderColor: '#1e2d4a',
+        borderWidth: 1,
+        titleColor: '#e8edf5',
+        bodyColor: '#a0aec0',
+        padding: 12,
+        callbacks: {
+          label: ctx => {
+            const v = ctx.parsed.y;
+            return `  ${ctx.dataset.label} : ${v >= 0 ? '+' : '▲'}${Math.abs(v).toFixed(1)}`;
+          }
+        }
+      },
+    },
+    scales: {
+      x: {
+        ticks: { color: '#6b7a96', maxRotation: 45, font: { size: 11 } },
+        grid:  { color: 'rgba(30,45,74,0.6)' },
+      },
+      y: {
+        ticks: {
+          color: '#6b7a96', font: { size: 11 },
+          callback: v => (v >= 0 ? '+' : '▲') + Math.abs(v),
+        },
+        grid: {
+          color: ctx => ctx.tick.value === 0 ? 'rgba(245,197,24,0.4)' : 'rgba(30,45,74,0.6)',
+          lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1,
+        },
+      },
+    },
+  });
+
+  // ─── PT グラフ ─────────────────────────────────────────────────
+  const ptCtx = document.getElementById('pt-chart').getContext('2d');
+  new Chart(ptCtx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'チームてん',   data: chartData.map(d => d.ten_pt),
+          borderColor:'#818cf8', backgroundColor: makeGradient(ptCtx, 129,140,248),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+        { label:'チームあじ',   data: chartData.map(d => d.aji_pt),
+          borderColor:'#f87171', backgroundColor: makeGradient(ptCtx, 248,113,113),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+        { label:'チームさとし', data: chartData.map(d => d.sat_pt),
+          borderColor:'#4ade80', backgroundColor: makeGradient(ptCtx,  74,222,128),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+      ],
+    },
+    options: chartOpts(),
+  });
+
+  // ─── 収支 グラフ ───────────────────────────────────────────────
+  const bkCtx = document.getElementById('bk-chart').getContext('2d');
+  new Chart(bkCtx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'チームてん',   data: chartData.map(d => d.ten_bk),
+          borderColor:'#818cf8', backgroundColor: makeGradient(bkCtx, 129,140,248),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+        { label:'チームあじ',   data: chartData.map(d => d.aji_bk),
+          borderColor:'#f87171', backgroundColor: makeGradient(bkCtx, 248,113,113),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+        { label:'チームさとし', data: chartData.map(d => d.sat_bk),
+          borderColor:'#4ade80', backgroundColor: makeGradient(bkCtx,  74,222,128),
+          tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true },
+      ],
+    },
+    options: chartOpts(),
+  });
+}
+
+// Chart.js が非同期ロードされる場合に対応
+if (typeof Chart !== 'undefined') {
+  renderCharts();
+} else {
+  window.addEventListener('load', renderCharts);
+}
+
+// ─── データテーブル ──────────────────────────────────────────────
+const tbody = document.getElementById('data-tbody');
+[...chartData].reverse().forEach(d => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${d.date}</td>
+    <td class="col-ten">${fmtPT(d.ten_pt)}</td>
+    <td class="col-ten col-bk">${fmtBK(d.ten_bk)}</td>
+    <td class="col-aji sep">${fmtPT(d.aji_pt)}</td>
+    <td class="col-aji col-bk">${fmtBK(d.aji_bk)}</td>
+    <td class="col-sat sep">${fmtPT(d.sat_pt)}</td>
+    <td class="col-sat col-bk">${fmtBK(d.sat_bk)}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+document.getElementById('updated-note').textContent =
+  `データ更新日: ${window.MLEAGUE_HISTORY_UPDATED || '---'}`;
+</script>
+
+</body>
+</html>

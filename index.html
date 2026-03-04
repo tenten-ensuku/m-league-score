@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mリーグ 2025-26 成績</title>
+  <style>
+    :root {
+      --bg:     #070c18;
+      --card:   #111d33;
+      --border: #1e2d4a;
+      --gold:   #f5c518;
+      --silver: #b0bec5;
+      --bronze: #cd8c5a;
+      --green:  #00e676;
+      --red:    #ff3d3d;
+      --text:   #e8edf5;
+      --muted:  #6b7a96;
+      --ten:    #818cf8;
+      --aji:    #f87171;
+      --sat:    #4ade80;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(245,197,24,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0,150,255,0.03) 0%, transparent 50%);
+    }
+
+    /* ===== HEADER ===== */
+    .hero {
+      background: linear-gradient(160deg, #050a14 0%, #0d1a30 60%, #070c18 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 44px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px);
+    }
+    .hero-inner { position: relative; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,197,24,0.12);
+      border: 1px solid rgba(245,197,24,0.4);
+      color: var(--gold);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 4px;
+      padding: 5px 14px; border-radius: 30px; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 900; letter-spacing: 6px; line-height: 1.1;
+      background: linear-gradient(90deg, #b8860b 0%, #f5c518 30%, #fff8dc 50%, #f5c518 70%, #b8860b 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+    .hero-sub { color: var(--muted); font-size: 0.9rem; letter-spacing: 2.5px; margin-bottom: 4px; }
+    .hero-date {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold); font-size: 0.78rem; letter-spacing: 1px;
+      margin-top: 12px;
+      background: rgba(245,197,24,0.07); padding: 4px 12px;
+      border-radius: 20px; border: 1px solid rgba(245,197,24,0.2);
+    }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 36px 20px 60px; }
+
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .section-header::before {
+      content: ''; width: 4px; height: 22px;
+      background: linear-gradient(to bottom, var(--gold), rgba(245,197,24,0.3));
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+    }
+
+    /* ===== RANKING TABLE ===== */
+    .table-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr {
+      background: linear-gradient(90deg, #0d1a30, #0a1422);
+      border-bottom: 1px solid rgba(245,197,24,0.35);
+    }
+    th {
+      padding: 14px 18px; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase;
+      white-space: nowrap; text-align: center;
+    }
+    th.left { text-align: left; }
+    tbody tr {
+      background: var(--card);
+      border-bottom: 1px solid rgba(30,45,74,0.8);
+      transition: background 0.15s;
+    }
+    tbody tr:hover { background: rgba(245,197,24,0.04); }
+    tbody tr.top1 { background: linear-gradient(90deg, rgba(245,197,24,0.10) 0%, var(--card) 60%); }
+    tbody tr.top2 { background: linear-gradient(90deg, rgba(176,190,197,0.07) 0%, var(--card) 60%); }
+    tbody tr.top3 { background: linear-gradient(90deg, rgba(205,140,90,0.07)  0%, var(--card) 60%); }
+    tbody tr:last-child { border-bottom: none; }
+    td { padding: 12px 18px; font-size: 0.9rem; text-align: center; white-space: nowrap; }
+    td.left { text-align: left; }
+
+    .rank-num { font-weight: 900; font-size: 1rem; color: var(--muted); }
+    .pname { font-weight: 600; font-size: 0.95rem; }
+    .ptag {
+      display: inline-block; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.5px; padding: 1px 7px; border-radius: 20px;
+      margin-left: 8px; vertical-align: middle; border: 1px solid transparent;
+    }
+    .score-wrap { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+    .score-val { font-weight: 800; font-size: 1rem; min-width: 76px; text-align: right; font-variant-numeric: tabular-nums; }
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+    .zer { color: var(--muted); }
+    .bar-track { width: 100px; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+    .bar-fill { height: 100%; border-radius: 3px; }
+    .bar-fill.pos { background: linear-gradient(90deg, #00c853, #69f0ae); }
+    .bar-fill.neg { background: linear-gradient(90deg, #ff1744, #ff6b6b); }
+    .games { color: var(--muted); font-size: 0.85rem; }
+    .avg-cell { font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+    .avg-good { color: var(--green); }
+    .avg-mid  { color: var(--text); }
+    .avg-bad  { color: var(--red); }
+
+    /* ===== FANTASY TEAMS ===== */
+    .fantasy-section { margin-top: 50px; }
+    .fantasy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .fc {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+      background: var(--card); transition: transform 0.2s;
+    }
+    .fc:hover { transform: translateY(-5px); }
+    .fc-head { padding: 20px 22px 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .fc-name { font-size: 1.1rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 4px; }
+    .fc-total { font-size: 1.6rem; font-weight: 900; margin-top: 6px; }
+    .fc-rows { padding: 4px 0 8px; }
+    .fc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 22px; border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.1s;
+    }
+    .fc-row:hover { background: rgba(255,255,255,0.03); }
+    .fc-row:last-child { border-bottom: none; }
+    .fc-pname { font-weight: 600; font-size: 0.88rem; }
+    .fc-team  { font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
+    .fc-score { font-weight: 800; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+    .fc-ten .fc-head { border-left: 4px solid var(--ten); }
+    .fc-ten .fc-name { color: #9fa8da; }
+    .fc-aji .fc-head { border-left: 4px solid var(--aji); }
+    .fc-aji .fc-name { color: #fca5a5; }
+    .fc-sat .fc-head { border-left: 4px solid var(--sat); }
+    .fc-sat .fc-name { color: #86efac; }
+    .rank-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%;
+      font-size: 0.65rem; font-weight: 700; margin-right: 6px;
+    }
+    .rank-badge.r1 { background: var(--gold);   color: #000; }
+    .rank-badge.r2 { background: var(--silver); color: #000; }
+    .rank-badge.r3 { background: var(--bronze); color: #000; }
+
+    /* ===== SUMMARY CARDS (グラフタブ) ===== */
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 40px; }
+    .card {
+      background: var(--card); border-radius: 14px;
+      border: 1px solid var(--border); padding: 20px 22px; transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card-team {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .card-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .card-dot.ten { background: var(--ten); box-shadow: 0 0 8px var(--ten); }
+    .card-dot.aji { background: var(--aji); box-shadow: 0 0 8px var(--aji); }
+    .card-dot.sat { background: var(--sat); box-shadow: 0 0 8px var(--sat); }
+    .card-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+    .card-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; }
+    .card-val { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .card-val.big { font-size: 1.5rem; }
+    .card-diff { font-size: 0.75rem; font-weight: 600; margin-left: 6px; vertical-align: middle; }
+
+    /* ===== CHART CARDS ===== */
+    .chart-card {
+      background: var(--card); border-radius: 14px;
+      border: 1px solid var(--border); padding: 28px 24px 20px;
+      margin-bottom: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .chart-title {
+      font-size: 1rem; font-weight: 700; letter-spacing: 2px;
+      color: var(--text); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .chart-badge {
+      font-size: 0.65rem; letter-spacing: 1px;
+      background: rgba(245,197,24,0.1); border: 1px solid rgba(245,197,24,0.3);
+      color: var(--gold); padding: 2px 8px; border-radius: 10px;
+    }
+    .chart-wrap { position: relative; height: 360px; }
+    .legend { display: flex; gap: 20px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.78rem; color: var(--muted); }
+    .legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ===== DATA LOG TABLE (グラフタブ) ===== */
+    .data-section { margin-top: 50px; }
+    .log-wrap {
+      border-radius: 14px; overflow: hidden; overflow-x: auto;
+      border: 1px solid var(--border); box-shadow: 0 16px 50px rgba(0,0,0,0.4);
+    }
+    .log-wrap table { min-width: 600px; }
+    .log-wrap th { text-align: right; }
+    .log-wrap th:first-child { text-align: center; }
+    .log-wrap td { text-align: right; }
+    .log-wrap td:first-child { text-align: center; color: var(--muted); font-size: 0.8rem; }
+    .col-ten { color: var(--ten); font-weight: 600; }
+    .col-aji { color: var(--aji); font-weight: 600; }
+    .col-sat { color: var(--sat); font-weight: 600; }
+    .col-bk  { font-weight: 700; }
+    .sep { border-left: 1px solid var(--border); }
+    .updated-note { text-align: center; margin-top: 28px; font-size: 0.75rem; color: var(--muted); }
+
+    /* ===== PAGE DIVIDER ===== */
+    .page-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 60px 0 50px;
+    }
+
+    /* ===== MISC ===== */
+    .no-data { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.95rem; line-height: 2; }
+
+    /* ===== FILTER BAR ===== */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-btn {
+      padding: 5px 14px; border-radius: 20px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--muted); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; cursor: pointer; transition: all 0.15s;
+      white-space: nowrap; font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--muted); color: var(--text); }
+    .filter-btn.active { background: rgba(245,197,24,0.12); border-color: rgba(245,197,24,0.5); color: var(--gold); }
+    .filter-btn.f-ten.active { background: rgba(129,140,248,0.15); border-color: #818cf8; color: #818cf8; }
+    .filter-btn.f-aji.active { background: rgba(248,113,113,0.15); border-color: #f87171; color: #f87171; }
+    .filter-btn.f-sat.active { background: rgba(74,222,128,0.15); border-color: #4ade80; color: #4ade80; }
+    .filter-sep { width: 1px; height: 24px; background: var(--border); align-self: center; flex-shrink: 0; }
+
+    /* ===== FC DELTA ===== */
+    .fc-delta { font-size: 0.72rem; font-weight: 600; margin-top: 4px; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    @media (max-width: 700px) {
+      th, td { padding: 10px 10px; font-size: 0.8rem; }
+      .bar-track, .ptag { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .chart-wrap { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">2025 - 2026 Season</div>
+    <h1>M LEAGUE</h1>
+    <div class="hero-sub">レギュラーシーズン 個人成績 &amp; ドラフトチーム &amp; 推移グラフ</div>
+    <div class="hero-date">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      更新日 <span id="updated-date">---</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+    <div class="section-header"><span class="section-title">Individual Rankings</span></div>
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-filter="">ALL</button>
+      <button class="filter-btn f-ten" data-filter="draft:ten">チームてん</button>
+      <button class="filter-btn f-aji" data-filter="draft:aji">チームあじ</button>
+      <button class="filter-btn f-sat" data-filter="draft:sat">チームさとし</button>
+      <div class="filter-sep"></div>
+      <button class="filter-btn" data-filter="team:渋谷ABEMAS">ABEMAS</button>
+      <button class="filter-btn" data-filter="team:麻雀格闘倶楽部">格闘倶楽部</button>
+      <button class="filter-btn" data-filter="team:EX風林火山">風林火山</button>
+      <button class="filter-btn" data-filter="team:BEAST X">BEAST X</button>
+      <button class="filter-btn" data-filter="team:KADOKAWAサクラナイツ">サクラナイツ</button>
+      <button class="filter-btn" data-filter="team:U-NEXTパイレーツ">パイレーツ</button>
+      <button class="filter-btn" data-filter="team:セガサミーフェニックス">フェニックス</button>
+      <button class="filter-btn" data-filter="team:赤坂ドリブンズ">ドリブンズ</button>
+      <button class="filter-btn" data-filter="team:EARTH JETS">EARTH JETS</button>
+      <button class="filter-btn" data-filter="team:雷電">雷電</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th class="left">雀士</th>
+            <th>合計PT</th>
+            <th>前回比</th>
+            <th>試合数</th>
+            <th>平均着順</th>
+          </tr>
+        </thead>
+        <tbody id="ranking-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="fantasy-section">
+      <div class="section-header"><span class="section-title">Draft Team Rankings</span></div>
+      <div class="fantasy-grid" id="fantasy-grid"></div>
+    </div>
+
+
+    <hr class="page-divider">
+
+    <div class="section-header"><span class="section-title">Current Status</span></div>
+    <div class="cards" id="summary-cards"></div>
+
+    <div class="section-header"><span class="section-title">PT History</span></div>
+    <div class="chart-card">
+      <div class="chart-title">合計PT 推移 <span class="chart-badge">REGULAR SEASON</span></div>
+      <div class="chart-wrap"><canvas id="pt-chart"></canvas></div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-line" style="background:var(--ten)"></div>チームてん</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--aji)"></div>チームあじ</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--sat)"></div>チームさとし</div>
+      </div>
+    </div>
+
+    <div class="section-header"><span class="section-title">Balance History</span></div>
+    <div class="chart-card">
+      <div class="chart-title">収支推移 <span class="chart-badge">2×自PT − 他2チームPT</span></div>
+      <div class="chart-wrap"><canvas id="bk-chart"></canvas></div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-line" style="background:var(--ten)"></div>チームてん</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--aji)"></div>チームあじ</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--sat)"></div>チームさとし</div>
+      </div>
+    </div>
+
+    <div class="data-section">
+      <div class="section-header"><span class="section-title">Data Log</span></div>
+      <div class="log-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th style="color:var(--ten)">てん PT</th>
+              <th style="color:var(--ten)">てん 収支</th>
+              <th style="color:var(--aji)" class="sep">あじ PT</th>
+              <th style="color:var(--aji)">あじ 収支</th>
+              <th style="color:var(--sat)" class="sep">さとし PT</th>
+              <th style="color:var(--sat)">さとし 収支</th>
+            </tr>
+          </thead>
+          <tbody id="log-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="updated-note" id="updated-note"></div>
+
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="chart.min.js" onerror="
+  var s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js';
+  document.head.appendChild(s);
+"></script>
+<script src="data.js"></script>
+<script src="history.js"></script>
+
+<script>
+// ─── 定数 ────────────────────────────────────────────────────────
+const TEAM_COLORS = {
+  '渋谷ABEMAS'           : { bg:'rgba(33,150,243,0.18)',  border:'#2196f3', text:'#90caf9' },
+  '麻雀格闘倶楽部'       : { bg:'rgba(244,67,54,0.18)',   border:'#f44336', text:'#ef9a9a' },
+  'EX風林火山'           : { bg:'rgba(255,152,0,0.18)',   border:'#ff9800', text:'#ffcc80' },
+  'BEAST X'              : { bg:'rgba(156,39,176,0.18)',  border:'#9c27b0', text:'#ce93d8' },
+  'KADOKAWAサクラナイツ' : { bg:'rgba(233,30,99,0.18)',   border:'#e91e63', text:'#f48fb1' },
+  'U-NEXTパイレーツ'     : { bg:'rgba(96,125,139,0.18)',  border:'#607d8b', text:'#b0bec5' },
+  'セガサミーフェニックス': { bg:'rgba(0,200,83,0.15)',    border:'#00c853', text:'#69f0ae' },
+  '赤坂ドリブンズ'       : { bg:'rgba(255,87,34,0.18)',   border:'#ff5722', text:'#ffab91' },
+  'EARTH JETS'           : { bg:'rgba(0,188,212,0.18)',   border:'#00bcd4', text:'#80deea' },
+  '雷電'                 : { bg:'rgba(234,179,8,0.18)',   border:'#eab308', text:'#fde047' },
+};
+const PLAYER_TEAMS = {
+  '永井孝典':'EX風林火山','内川幸太郎':'EX風林火山','滝沢和典':'麻雀格闘倶楽部',
+  '下石戟':'BEAST X','渡辺太':'赤坂ドリブンズ','中田花奈':'BEAST X',
+  '竹内元太':'セガサミーフェニックス','白鳥翔':'渋谷ABEMAS','二階堂亜樹':'EX風林火山',
+  '高宮まり':'麻雀格闘倶楽部','伊達朱里紗':'麻雀格闘倶楽部','渋川難波':'KADOKAWAサクラナイツ',
+  '園田賢':'赤坂ドリブンズ','石井一馬':'EARTH JETS','黒沢咲':'雷電',
+  '多井隆晴':'渋谷ABEMAS','醍醐大':'セガサミーフェニックス','東城りお':'BEAST X',
+  '佐々木寿人':'麻雀格闘倶楽部','鈴木優':'U-NEXTパイレーツ','萩原聖人':'雷電',
+  '逢川恵夢':'EARTH JETS','浅井堂岐':'セガサミーフェニックス','茅森早香':'セガサミーフェニックス',
+  '瀬戸熊直樹':'雷電','浅見真紀':'赤坂ドリブンズ','瑞原明奈':'U-NEXTパイレーツ',
+  '鈴木大介':'BEAST X','本田朋広':'雷電','日向藍子':'渋谷ABEMAS',
+  '仲林圭':'U-NEXTパイレーツ','阿久津翔太':'KADOKAWAサクラナイツ','岡田紗佳':'KADOKAWAサクラナイツ',
+  '鈴木たろう':'赤坂ドリブンズ','松本吉弘':'渋谷ABEMAS','三浦智博':'EARTH JETS',
+  '勝又健志':'EX風林火山','HIRO柴田':'EARTH JETS','小林剛':'U-NEXTパイレーツ','堀慎吾':'KADOKAWAサクラナイツ',
+};
+const FANTASY_CONFIG = [
+  { id:'ten', name:'チームてん',   cssClass:'fc-ten',
+    members:['下石戟','竹内元太','渋川難波','石井一馬','伊達朱里紗','醍醐大','鈴木優','仲林圭','岡田紗佳','松本吉弘'] },
+  { id:'aji', name:'チームあじ',   cssClass:'fc-aji',
+    members:['滝沢和典','二階堂亜樹','多井隆晴','佐々木寿人','逢川恵夢','浅井堂岐','鈴木大介','勝又健志','小林剛','堀慎吾'] },
+  { id:'sat', name:'チームさとし', cssClass:'fc-sat',
+    members:['永井孝典','白鳥翔','渡辺太','園田賢','東城りお','浅見真紀','瑞原明奈','鈴木たろう','三浦智博','HIRO柴田'] },
+];
+
+// ─── ヘルパー ────────────────────────────────────────────────────
+const MAX_SCORE = 650;
+function fmt(v, d=1) {
+  if (v == null) return '—';
+  return v >= 0 ? `+${Math.abs(v).toFixed(d)}` : `▲${Math.abs(v).toFixed(d)}`;
+}
+function cls(v) { return v == null ? 'zer' : v > 0 ? 'pos' : v < 0 ? 'neg' : 'zer'; }
+function barW(v) { return Math.round(Math.min(Math.abs(v) / MAX_SCORE * 100, 100)); }
+function avgCls(v) { return v <= 2.3 ? 'avg-good' : v <= 2.6 ? 'avg-mid' : 'avg-bad'; }
+function teamTag(name) {
+  const team = PLAYER_TEAMS[name] || '';
+  const c = TEAM_COLORS[team];
+  if (!c) return '';
+  return `<span class="ptag" style="background:${c.bg};border-color:${c.border};color:${c.text}">${team}</span>`;
+}
+
+// ─── ランキングテーブル ──────────────────────────────────────────
+const players = window.MLEAGUE_PLAYERS || [];
+
+document.getElementById('updated-date').textContent = window.MLEAGUE_UPDATED || '---';
+
+const rankingTbody = document.getElementById('ranking-tbody');
+if (!players.length) {
+  rankingTbody.innerHTML = `<tr><td colspan="5">
+    <div class="no-data">データがありません。update.bat を実行してください。</div>
+  </td></tr>`;
+} else {
+  players.forEach(p => {
+    const tr = document.createElement('tr');
+    tr.className = p.rank===1 ? 'top1' : p.rank===2 ? 'top2' : p.rank===3 ? 'top3' : '';
+    const rankDelta = p.rank_delta != null && p.rank_delta !== 0
+      ? `<span style="font-size:0.6rem;margin-left:4px;color:${p.rank_delta > 0 ? 'var(--green)' : 'var(--red)'}">${p.rank_delta > 0 ? '▲' : '▼'}${Math.abs(p.rank_delta)}</span>`
+      : '';
+    const rankCell = p.rank <= 3
+      ? `<span class="medal">${['🥇','🥈','🥉'][p.rank-1]}</span>${rankDelta}`
+      : `<span class="rank-num">${p.rank}</span>${rankDelta}`;
+    const deltaCell = p.score_delta != null
+      ? `<span class="${cls(p.score_delta)}" style="font-size:0.85rem;font-weight:700;font-variant-numeric:tabular-nums">${p.score_delta >= 0 ? '↑' : '↓'}${Math.abs(p.score_delta).toFixed(1)}</span>`
+      : `<span style="color:var(--muted);font-size:0.8rem">—</span>`;
+    tr.innerHTML = `
+      <td>${rankCell}</td>
+      <td class="left"><span class="pname">${p.name}</span>${teamTag(p.name)}</td>
+      <td>
+        <div class="score-wrap">
+          <span class="score-val ${cls(p.score)}">${fmt(p.score)}</span>
+          <div class="bar-track"><div class="bar-fill ${cls(p.score)}" style="width:${barW(p.score)}%"></div></div>
+        </div>
+      </td>
+      <td>${deltaCell}</td>
+      <td class="games">${p.games}</td>
+      <td class="avg-cell ${avgCls(p.avg)}">${p.avg.toFixed(2)}</td>
+    `;
+    rankingTbody.appendChild(tr);
+  });
+}
+
+// ─── ドラフトチームカード ────────────────────────────────────────
+const scoreMap = {};
+players.forEach(p => { scoreMap[p.name] = p.score; });
+
+const fantasyData = FANTASY_CONFIG.map(cfg => {
+  const members = cfg.members.map(name => ({
+    name, team: PLAYER_TEAMS[name] || '', score: scoreMap[name] ?? 0,
+  }));
+  return { ...cfg, members, total: members.reduce((s,m) => s + m.score, 0) };
+});
+const sorted = [...fantasyData].sort((a,b) => b.total - a.total);
+sorted.forEach((t,i) => { t.teamRank = i+1; });
+
+const histData = window.MLEAGUE_HISTORY || [];
+const lastH = histData[histData.length - 1];
+const prevH = histData[histData.length - 2];
+
+const fantasyGrid = document.getElementById('fantasy-grid');
+fantasyData.forEach(t => {
+  const byScore = [...t.members].sort((a,b) => b.score - a.score);
+  const badgeCls = t.teamRank===1 ? 'r1' : t.teamRank===2 ? 'r2' : 'r3';
+  const deltaKey = `${t.id}_pt`;
+  const delta = (lastH && prevH && lastH[deltaKey] != null && prevH[deltaKey] != null)
+    ? Math.round((lastH[deltaKey] - prevH[deltaKey]) * 10) / 10 : null;
+  const deltaHtml = delta != null
+    ? `<div class="fc-delta ${cls(delta)}">${delta >= 0 ? '↑' : '↓'} ${Math.abs(delta).toFixed(1)} PT <span style="opacity:0.5;font-weight:400">前回比</span></div>`
+    : '';
+  const card = document.createElement('div');
+  card.className = `fc ${t.cssClass}`;
+  card.innerHTML = `
+    <div class="fc-head">
+      <div class="fc-name"><span class="rank-badge ${badgeCls}">${t.teamRank}</span>${t.name}</div>
+      <div class="fc-total ${cls(t.total)}">合計 ${fmt(t.total)} PT</div>
+      ${deltaHtml}
+    </div>
+    <div class="fc-rows">
+      ${byScore.map(m => `
+        <div class="fc-row">
+          <div><div class="fc-pname">${m.name}</div><div class="fc-team">${m.team}</div></div>
+          <span class="fc-score ${cls(m.score)}">${fmt(m.score)}</span>
+        </div>`).join('')}
+    </div>`;
+  fantasyGrid.appendChild(card);
+});
+
+// ─── グラフ描画（タブ初回表示時に呼ばれる）──────────────────────
+const chartData = window.MLEAGUE_HISTORY || [];
+
+function renderCharts() {
+  // サマリーカード
+  if (chartData.length) {
+    const last = chartData[chartData.length - 1];
+    const prev = chartData[chartData.length - 2];
+    const cardDefs = [
+      { name:'チームてん',   dot:'ten', ptK:'ten_pt', bkK:'ten_bk' },
+      { name:'チームあじ',   dot:'aji', ptK:'aji_pt', bkK:'aji_bk' },
+      { name:'チームさとし', dot:'sat', ptK:'sat_pt', bkK:'sat_bk' },
+    ];
+    const cardsEl = document.getElementById('summary-cards');
+    cardDefs.forEach(t => {
+      const pt   = last ? last[t.ptK] : null;
+      const bk   = last ? last[t.bkK] : null;
+      const prev2= prev ? prev[t.ptK] : null;
+      const diff = (pt != null && prev2 != null) ? pt - prev2 : null;
+      const diffHtml = diff != null
+        ? `<span class="card-diff ${cls(diff)}">${diff>=0?'↑':'↓'} ${Math.abs(diff).toFixed(1)}</span>` : '';
+      cardsEl.innerHTML += `
+        <div class="card">
+          <div class="card-team"><div class="card-dot ${t.dot}"></div>${t.name}</div>
+          <div class="card-row">
+            <span class="card-label">合計PT</span>
+            <span class="card-val big ${cls(pt)}">${pt!=null?Math.abs(pt).toFixed(1):'—'}${diffHtml}</span>
+          </div>
+          <div class="card-row">
+            <span class="card-label">収支</span>
+            <span class="card-val ${cls(bk)}">${fmt(bk)}</span>
+          </div>
+        </div>`;
+    });
+  }
+
+  // Chart.js チェック
+  if (typeof Chart === 'undefined') {
+    ['pt-chart','bk-chart'].forEach(id => {
+      document.getElementById(id).parentElement.innerHTML =
+        '<div style="text-align:center;padding:60px;color:var(--red);font-size:0.85rem">Chart.js の読み込みに失敗しました。<br>インターネット接続を確認するか update.bat を実行してください。</div>';
+    });
+    return;
+  }
+  if (!chartData.length) return;
+
+  Chart.defaults.color = '#6b7a96';
+  Chart.defaults.font.family = "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif";
+
+  const labels = chartData.map(d => d.date);
+
+  function makeGradient(ctx, r, g, b) {
+    const h = ctx.canvas.parentElement.clientHeight || 360;
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, `rgba(${r},${g},${b},0.28)`);
+    grad.addColorStop(1, `rgba(${r},${g},${b},0.02)`);
+    return grad;
+  }
+
+  const opts = () => ({
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode:'index', intersect:false },
+    plugins: {
+      legend: { display:false },
+      tooltip: {
+        backgroundColor:'#111d33', borderColor:'#1e2d4a', borderWidth:1,
+        titleColor:'#e8edf5', bodyColor:'#a0aec0', padding:12,
+        callbacks: {
+          label: ctx => {
+            const v = ctx.parsed.y;
+            return `  ${ctx.dataset.label} : ${v>=0?'+':'▲'}${Math.abs(v).toFixed(1)}`;
+          }
+        }
+      },
+    },
+    scales: {
+      x: {
+        ticks: { color:'#6b7a96', maxRotation:45, font:{size:11} },
+        grid:  { color:'rgba(30,45,74,0.6)' },
+      },
+      y: {
+        ticks: { color:'#6b7a96', font:{size:11}, callback: v => (v>=0?'+':'▲')+Math.abs(v) },
+        grid: {
+          color: ctx => ctx.tick.value===0 ? 'rgba(245,197,24,0.4)' : 'rgba(30,45,74,0.6)',
+          lineWidth: ctx => ctx.tick.value===0 ? 2 : 1,
+        },
+      },
+    },
+  });
+
+  function ds(ctx, label, data, r, g, b, borderColor) {
+    return { label, data, borderColor, backgroundColor: makeGradient(ctx, r, g, b),
+             tension:0.35, pointRadius:4, pointHoverRadius:7, borderWidth:2.5, fill:true };
+  }
+
+  // PTグラフ
+  const ptCtx = document.getElementById('pt-chart').getContext('2d');
+  new Chart(ptCtx, {
+    type:'line',
+    data: { labels, datasets: [
+      ds(ptCtx,'チームてん',   chartData.map(d=>d.ten_pt), 129,140,248, '#818cf8'),
+      ds(ptCtx,'チームあじ',   chartData.map(d=>d.aji_pt), 248,113,113, '#f87171'),
+      ds(ptCtx,'チームさとし', chartData.map(d=>d.sat_pt),  74,222,128, '#4ade80'),
+    ]},
+    options: opts(),
+  });
+
+  // 収支グラフ
+  const bkCtx = document.getElementById('bk-chart').getContext('2d');
+  new Chart(bkCtx, {
+    type:'line',
+    data: { labels, datasets: [
+      ds(bkCtx,'チームてん',   chartData.map(d=>d.ten_bk), 129,140,248, '#818cf8'),
+      ds(bkCtx,'チームあじ',   chartData.map(d=>d.aji_bk), 248,113,113, '#f87171'),
+      ds(bkCtx,'チームさとし', chartData.map(d=>d.sat_bk),  74,222,128, '#4ade80'),
+    ]},
+    options: opts(),
+  });
+
+  // データログ
+  const logTbody = document.getElementById('log-tbody');
+  [...chartData].reverse().forEach(d => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${d.date}</td>
+      <td class="col-ten">${fmt(d.ten_pt)}</td>
+      <td class="col-ten col-bk">${fmt(d.ten_bk)}</td>
+      <td class="col-aji sep">${fmt(d.aji_pt)}</td>
+      <td class="col-aji col-bk">${fmt(d.aji_bk)}</td>
+      <td class="col-sat sep">${fmt(d.sat_pt)}</td>
+      <td class="col-sat col-bk">${fmt(d.sat_bk)}</td>
+    `;
+    logTbody.appendChild(tr);
+  });
+
+  document.getElementById('updated-note').textContent =
+    `データ更新日: ${window.MLEAGUE_HISTORY_UPDATED || '---'}`;
+}
+
+// ─── チームフィルター ────────────────────────────────────────────
+document.getElementById('filter-bar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  document.querySelectorAll('#ranking-tbody tr').forEach(tr => {
+    if (tr.querySelector('.no-data')) return;
+    const nameEl = tr.querySelector('.pname');
+    if (!nameEl) return;
+    const name = nameEl.textContent.trim();
+    let show = true;
+    if (filter.startsWith('draft:')) {
+      const cfg = FANTASY_CONFIG.find(c => c.id === filter.slice(6));
+      show = cfg ? cfg.members.includes(name) : false;
+    } else if (filter.startsWith('team:')) {
+      show = PLAYER_TEAMS[name] === filter.slice(5);
+    }
+    tr.style.display = show ? '' : 'none';
+  });
+});
+
+// ─── ページロード時にグラフ描画 ──────────────────────────────────
+if (typeof Chart !== 'undefined') {
+  renderCharts();
+} else {
+  window.addEventListener('load', renderCharts);
+}
+</script>
+
+</body>
+</html>
