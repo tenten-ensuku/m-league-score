@@ -2,8 +2,8 @@ name: Mリーグ データ自動更新
 
 on:
   schedule:
-    - cron: '0 23 * * *'   # 毎日 08:00 JST（UTC 23:00）
-  workflow_dispatch:         # GitHub画面からの手動実行も可能
+    - cron: '0 17 * * 1,2,4,5'  # 月火木金 26:00 JST = 火水金土 2:00 JST (UTC 17:00)
+  workflow_dispatch:              # GitHub画面からの手動実行も可能
 
 permissions:
   contents: write
@@ -31,3 +31,11 @@ jobs:
           git add data.js history.js
           git diff --staged --quiet || git commit -m "データ更新: $(TZ='Asia/Tokyo' date '+%Y/%m/%d')"
           git push
+
+      - name: Netlify にデプロイ
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --prod --dir=.
