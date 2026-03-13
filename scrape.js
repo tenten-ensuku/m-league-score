@@ -53,6 +53,11 @@ function fetchUrl(url, redirectCount = 0) {
   });
 }
 
+// ─── 選手名の正規化（小文字ASCII誤植を除去。HIRO柴田の大文字は保持）────
+function normalizeName(name) {
+  return name.replace(/^[a-z]+/, '');
+}
+
 // ─── HTMLテーブルをパース ────────────────────────────────────────
 function parseRankingTable(html) {
   const tableRe = /<table[^>]*>[\s\S]*?<\/table>/gi;
@@ -93,7 +98,7 @@ function parseRankingTable(html) {
     const rank = parseInt(cells[0]);
     if (isNaN(rank) || rank < 1 || rank > 60) continue;
 
-    const name = cells[1].split(/[\s　\n\r]+/)[0].trim();
+    const name = normalizeName(cells[1].split(/[\s　\n\r]+/)[0].trim());
     if (!name) continue;
 
     const raw   = cells[2].replace(/,/g, '').replace(/\+/g, '').trim();
@@ -138,7 +143,7 @@ function loadPrevScores() {
   try {
     const players = JSON.parse(match[1]);
     const map = {};
-    players.forEach(p => { map[p.name] = { score: p.score, rank: p.rank }; });
+    players.forEach(p => { map[normalizeName(p.name)] = { score: p.score, rank: p.rank }; });
     return map;
   } catch { return {}; }
 }
