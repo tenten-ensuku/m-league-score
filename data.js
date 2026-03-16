@@ -1,5 +1,5 @@
 // Mリーグ成績データ（自動生成 - scrape.js が更新します）
-// 更新日時: 2026/03/13
+// 更新日時: 2026/03/16
 window.MLEAGUE_PLAYERS = [
   {
     "rank": 1,
@@ -25,7 +25,7 @@ window.MLEAGUE_PLAYERS = [
     "score": 395.3,
     "games": 28,
     "avg": 2.25,
-    "score_delta": -20.6,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -40,10 +40,10 @@ window.MLEAGUE_PLAYERS = [
   {
     "rank": 5,
     "name": "二階堂亜樹",
-    "score": 270.7,
-    "games": 24,
-    "avg": 2.29,
-    "score_delta": 0,
+    "score": 323.8,
+    "games": 25,
+    "avg": 2.24,
+    "score_delta": 53.1,
     "rank_delta": 0
   },
   {
@@ -70,8 +70,8 @@ window.MLEAGUE_PLAYERS = [
     "score": 220.7,
     "games": 27,
     "avg": 2.37,
-    "score_delta": 25.1,
-    "rank_delta": 3
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 9,
@@ -79,8 +79,8 @@ window.MLEAGUE_PLAYERS = [
     "score": 217.4,
     "games": 33,
     "avg": 2.3,
-    "score_delta": 71.7,
-    "rank_delta": 4
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 10,
@@ -88,8 +88,8 @@ window.MLEAGUE_PLAYERS = [
     "score": 217.1,
     "games": 37,
     "avg": 2.35,
-    "score_delta": -4.5,
-    "rank_delta": -2
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 11,
@@ -98,16 +98,16 @@ window.MLEAGUE_PLAYERS = [
     "games": 30,
     "avg": 2.33,
     "score_delta": 0,
-    "rank_delta": -2
+    "rank_delta": 0
   },
   {
     "rank": 12,
     "name": "白鳥翔",
-    "score": 210.4,
-    "games": 32,
-    "avg": 2.22,
-    "score_delta": 0,
-    "rank_delta": -2
+    "score": 152.7,
+    "games": 33,
+    "avg": 2.27,
+    "score_delta": -57.7,
+    "rank_delta": 0
   },
   {
     "rank": 13,
@@ -116,7 +116,7 @@ window.MLEAGUE_PLAYERS = [
     "games": 32,
     "avg": 2.34,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 14,
@@ -129,39 +129,39 @@ window.MLEAGUE_PLAYERS = [
   },
   {
     "rank": 15,
-    "name": "多井隆晴",
-    "score": 121.9,
-    "games": 36,
-    "avg": 2.36,
-    "score_delta": 0,
-    "rank_delta": 0
+    "name": "鈴木優",
+    "score": 134.5,
+    "games": 33,
+    "avg": 2.55,
+    "score_delta": 84.4,
+    "rank_delta": 3
   },
   {
     "rank": 16,
+    "name": "多井隆晴",
+    "score": 125.4,
+    "games": 37,
+    "avg": 2.35,
+    "score_delta": 3.5,
+    "rank_delta": -1
+  },
+  {
+    "rank": 17,
     "name": "黒沢咲",
     "score": 58.6,
     "games": 25,
     "avg": 2.48,
-    "score_delta": -47.6,
-    "rank_delta": 0
+    "score_delta": 0,
+    "rank_delta": -1
   },
   {
-    "rank": 17,
+    "rank": 18,
     "name": "醍醐大",
     "score": 52.2,
     "games": 33,
     "avg": 2.45,
     "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 18,
-    "name": "鈴木優",
-    "score": 50.1,
-    "games": 32,
-    "avg": 2.59,
-    "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": -1
   },
   {
     "rank": 19,
@@ -174,29 +174,29 @@ window.MLEAGUE_PLAYERS = [
   },
   {
     "rank": 20,
-    "name": "瀬戸熊直樹",
-    "score": 7.8,
-    "games": 27,
-    "avg": 2.48,
-    "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 21,
     "name": "東城りお",
     "score": 6.6,
     "games": 28,
     "avg": 2.5,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": 1
+  },
+  {
+    "rank": 21,
+    "name": "瀬戸熊直樹",
+    "score": -30.7,
+    "games": 28,
+    "avg": 2.54,
+    "score_delta": -38.5,
+    "rank_delta": -1
   },
   {
     "rank": 22,
     "name": "瑞原明奈",
-    "score": -36.7,
-    "games": 27,
-    "avg": 2.63,
-    "score_delta": 0,
+    "score": -54.8,
+    "games": 28,
+    "avg": 2.64,
+    "score_delta": -18.1,
     "rank_delta": 0
   },
   {
@@ -220,10 +220,10 @@ window.MLEAGUE_PLAYERS = [
   {
     "rank": 25,
     "name": "本田朋広",
-    "score": -92.3,
-    "games": 32,
-    "avg": 2.56,
-    "score_delta": 0,
+    "score": -83.3,
+    "games": 33,
+    "avg": 2.55,
+    "score_delta": 9,
     "rank_delta": 0
   },
   {
@@ -251,7 +251,7 @@ window.MLEAGUE_PLAYERS = [
     "games": 26,
     "avg": 2.65,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 29,
@@ -259,8 +259,8 @@ window.MLEAGUE_PLAYERS = [
     "score": -147.4,
     "games": 30,
     "avg": 2.6,
-    "score_delta": -31.2,
-    "rank_delta": -1
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 30,
@@ -313,26 +313,26 @@ window.MLEAGUE_PLAYERS = [
     "score": -334.9,
     "games": 29,
     "avg": 2.76,
-    "score_delta": 7.1,
-    "rank_delta": 1
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 36,
-    "name": "勝又健志",
-    "score": -338.2,
-    "games": 22,
-    "avg": 2.77,
-    "score_delta": 0,
-    "rank_delta": -1
-  },
-  {
-    "rank": 37,
     "name": "HIRO柴田",
     "score": -362.8,
     "games": 27,
     "avg": 2.81,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": 1
+  },
+  {
+    "rank": 37,
+    "name": "勝又健志",
+    "score": -373.9,
+    "games": 23,
+    "avg": 2.78,
+    "score_delta": -35.7,
+    "rank_delta": -1
   },
   {
     "rank": 38,
@@ -362,4 +362,4 @@ window.MLEAGUE_PLAYERS = [
     "rank_delta": 0
   }
 ];
-window.MLEAGUE_UPDATED = "2026/03/13";
+window.MLEAGUE_UPDATED = "2026/03/16";
