@@ -1,5 +1,5 @@
 // Mリーグ成績データ（自動生成 - scrape.js が更新します）
-// 更新日時: 2026/04/03
+// 更新日時: 2026/04/06
 window.MLEAGUE_PLAYERS = [
   {
     "rank": 1,
@@ -362,4 +362,4 @@ window.MLEAGUE_PLAYERS = [
     "rank_delta": 0
   }
 ];
-window.MLEAGUE_UPDATED = "2026/04/03";
+window.MLEAGUE_UPDATED = "2026/04/06";
