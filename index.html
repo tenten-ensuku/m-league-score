@@ -120,6 +120,7 @@
     }
     .score-wrap { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
     .score-val { font-weight: 800; font-size: 1rem; min-width: 76px; text-align: right; font-variant-numeric: tabular-nums; }
+    .sub-score { font-size: 0.82rem; color: #9ca3af; text-align: right; font-variant-numeric: tabular-nums; }
     .pos { color: var(--green); }
     .neg { color: var(--red); }
     .zer { color: var(--muted); }
@@ -319,6 +320,8 @@
             <th>順位</th>
             <th class="left">雀士</th>
             <th>合計PT</th>
+            <th>レギュラー</th>
+            <th>セミ</th>
             <th>前回比</th>
             <th>試合数</th>
             <th>平均着順</th>
@@ -480,6 +483,8 @@ if (!players.length) {
           <div class="bar-track"><div class="bar-fill ${cls(p.score)}" style="width:${barW(p.score)}%"></div></div>
         </div>
       </td>
+      <td class="sub-score">${fmt(p.regular_score ?? p.score)}</td>
+      <td class="sub-score ${cls(p.semi_score ?? 0)}">${p.semi_score ? fmt(p.semi_score) : '—'}</td>
       <td>${deltaCell}</td>
       <td class="games">${p.games}</td>
       <td class="avg-cell ${avgCls(p.avg)}">${p.avg.toFixed(2)}</td>

@@ -240,22 +240,28 @@ async function downloadChartJs() {
 
 // ─── メイン ──────────────────────────────────────────────────────
 async function main() {
-  const URL = 'https://kinmaweb.jp/mleague-ranking/2025-regular';
+  const REGULAR_URL = 'https://kinmaweb.jp/mleague-ranking/2025-regular';
+  const SEMI_URL    = 'https://kinmaweb.jp/mleague-ranking/2025-semifinal';
+  const round1      = v => Math.round(v * 10) / 10;
 
   console.log('====================================');
   console.log('  Mリーグ成績表 自動更新ツール');
   console.log('====================================');
-  console.log(`取得先: ${URL}\n`);
+  console.log(`取得先: ${REGULAR_URL}`);
+  console.log(`      + ${SEMI_URL}\n`);
 
   // 前回スコアを先に読んでおく
   const prevScores = loadPrevScores();
   const hasPrev = Object.keys(prevScores).length > 0;
 
-  // 取得
-  let html;
+  // レギュラー・セミファイナルを並行取得
+  let regularHtml, semiHtml;
   try {
-    process.stdout.write('データ取得中... ');
-    html = await fetchUrl(URL);
+    process.stdout.write('データ取得中（レギュラー＋セミファイナル並行）... ');
+    [regularHtml, semiHtml] = await Promise.all([
+      fetchUrl(REGULAR_URL),
+      fetchUrl(SEMI_URL),
+    ]);
     console.log('完了');
   } catch (err) {
     console.error('\n❌ 取得失敗:', err.message);
@@ -265,13 +271,36 @@ async function main() {
 
   // パース
   process.stdout.write('データ解析中... ');
-  const players = parseRankingTable(html);
-  console.log(`${players.length}名を取得`);
+  const regularPlayers = parseRankingTable(regularHtml);
+  const semiPlayers    = parseRankingTable(semiHtml);
+  console.log(`レギュラー ${regularPlayers.length}名 / セミファイナル ${semiPlayers.length}名を取得`);
 
-  if (players.length < 10) {
-    console.error('\n❌ データが少なすぎます（サイト構造が変わった可能性があります）');
+  if (regularPlayers.length < 10) {
+    console.error('\n❌ レギュラーデータが少なすぎます（サイト構造が変わった可能性があります）');
     process.exit(1);
   }
+
+  // セミファイナルをname→playerのMapに変換
+  const semiMap = {};
+  semiPlayers.forEach(p => { semiMap[p.name] = p; });
+
+  // マージ：レギュラーをベースにセミを合算
+  const players = regularPlayers.map(p => {
+    const s = semiMap[p.name] || { score: 0, games: 0 };
+    return {
+      ...p,
+      regular_score: p.score,
+      semi_score:    s.score,
+      score:         round1(p.score + s.score),
+      regular_games: p.games,
+      semi_games:    s.games,
+      games:         p.games + s.games,
+    };
+  });
+
+  // 合計スコアで再ソート＆rank再付番
+  players.sort((a, b) => b.score - a.score);
+  players.forEach((p, i) => { p.rank = i + 1; });
 
   // 前回比を付加
   players.forEach(p => {
