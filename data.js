@@ -1,5 +1,5 @@
 // Mリーグ成績データ（自動生成 - scrape.js が更新します）
-// 更新日時: 2026/04/08
+// 更新日時: 2026/04/07
 window.MLEAGUE_PLAYERS = [
   {
     "rank": 1,
@@ -63,7 +63,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -22.6,
     "regular_games": 36,
     "semi_games": 1,
-    "score_delta": -22.6,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -115,7 +115,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 2.2,
     "regular_games": 27,
     "semi_games": 1,
-    "score_delta": 2.2,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -245,7 +245,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 5.1,
     "regular_games": 30,
     "semi_games": 1,
-    "score_delta": 5.1,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -258,7 +258,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -21.6,
     "regular_games": 28,
     "semi_games": 1,
-    "score_delta": -21.6,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -271,8 +271,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 68.8,
     "regular_games": 29,
     "semi_games": 1,
-    "score_delta": 68.8,
-    "rank_delta": 3
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 22,
@@ -285,7 +285,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 23,
@@ -298,7 +298,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 29,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 24,
@@ -311,7 +311,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 25,
@@ -323,8 +323,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 75.4,
     "regular_games": 27,
     "semi_games": 1,
-    "score_delta": 75.4,
-    "rank_delta": 4
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 26,
@@ -337,7 +337,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 35,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 27,
@@ -350,7 +350,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 22,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 28,
@@ -363,7 +363,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 29,
@@ -376,7 +376,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 30,
@@ -389,7 +389,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 20,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 31,
@@ -402,7 +402,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 32,
@@ -414,8 +414,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -55,
     "regular_games": 30,
     "semi_games": 1,
-    "score_delta": -55,
-    "rank_delta": -4
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 33,
@@ -480,7 +480,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 28,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 38,
@@ -493,7 +493,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 32,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 39,
@@ -506,7 +506,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 40,
@@ -518,8 +518,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -52.3,
     "regular_games": 24,
     "semi_games": 1,
-    "score_delta": -52.3,
-    "rank_delta": -3
+    "score_delta": 0,
+    "rank_delta": 0
   }
 ];
-window.MLEAGUE_UPDATED = "2026/04/08";
+window.MLEAGUE_UPDATED = "2026/04/07";
