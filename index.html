@@ -83,11 +83,12 @@
 
     /* ===== RANKING TABLE ===== */
     .table-wrap {
-      border-radius: 14px; overflow: hidden;
+      border-radius: 14px; overflow-x: auto; overflow-y: hidden;
       border: 1px solid var(--border);
+      -webkit-overflow-scrolling: touch;
       box-shadow: 0 24px 80px rgba(0,0,0,0.6);
     }
-    table { width: 100%; border-collapse: collapse; }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; }
     thead tr {
       background: linear-gradient(90deg, #0d1a30, #0a1422);
       border-bottom: 1px solid rgba(245,197,24,0.35);
