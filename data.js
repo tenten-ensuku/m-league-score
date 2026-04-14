@@ -1,17 +1,17 @@
 // Mリーグ成績データ（自動生成 - scrape.js が更新します）
-// 更新日時: 2026/04/13
+// 更新日時: 2026/04/14
 window.MLEAGUE_PLAYERS = [
   {
     "rank": 1,
     "name": "下石戟",
-    "score": 583.9,
-    "games": 39,
+    "score": 501.1,
+    "games": 40,
     "avg": 2.08,
     "regular_score": 614,
-    "semi_score": -30.1,
+    "semi_score": -112.9,
     "regular_games": 38,
-    "semi_games": 1,
-    "score_delta": 0,
+    "semi_games": 2,
+    "score_delta": -82.8,
     "rank_delta": 0
   },
   {
@@ -29,32 +29,19 @@ window.MLEAGUE_PLAYERS = [
   },
   {
     "rank": 3,
-    "name": "渡辺太",
-    "score": 373.2,
-    "games": 34,
-    "avg": 2.27,
-    "regular_score": 282.9,
-    "semi_score": 90.3,
-    "regular_games": 33,
-    "semi_games": 1,
-    "score_delta": 0,
-    "rank_delta": 0
+    "name": "園田賢",
+    "score": 349.2,
+    "games": 38,
+    "avg": 2.19,
+    "regular_score": 402.7,
+    "semi_score": -53.5,
+    "regular_games": 36,
+    "semi_games": 2,
+    "score_delta": -9.7,
+    "rank_delta": 1
   },
   {
     "rank": 4,
-    "name": "園田賢",
-    "score": 358.9,
-    "games": 37,
-    "avg": 2.19,
-    "regular_score": 402.7,
-    "semi_score": -43.8,
-    "regular_games": 36,
-    "semi_games": 1,
-    "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 5,
     "name": "滝沢和典",
     "score": 346.3,
     "games": 34,
@@ -64,10 +51,10 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 33,
     "semi_games": 1,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": 1
   },
   {
-    "rank": 6,
+    "rank": 5,
     "name": "二階堂亜樹",
     "score": 345.5,
     "games": 28,
@@ -77,7 +64,20 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 2,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": 1
+  },
+  {
+    "rank": 6,
+    "name": "渡辺太",
+    "score": 336.9,
+    "games": 35,
+    "avg": 2.27,
+    "regular_score": 282.9,
+    "semi_score": 54,
+    "regular_games": 33,
+    "semi_games": 2,
+    "score_delta": -36.3,
+    "rank_delta": -3
   },
   {
     "rank": 7,
@@ -89,7 +89,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -48.8,
     "regular_games": 36,
     "semi_games": 2,
-    "score_delta": -26.2,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -102,7 +102,7 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -0.1,
     "regular_games": 27,
     "semi_games": 2,
-    "score_delta": -61.2,
+    "score_delta": 0,
     "rank_delta": 0
   },
   {
@@ -146,6 +146,19 @@ window.MLEAGUE_PLAYERS = [
   },
   {
     "rank": 12,
+    "name": "黒沢咲",
+    "score": 175.4,
+    "games": 28,
+    "avg": 2.42,
+    "regular_score": 109.9,
+    "semi_score": 65.5,
+    "regular_games": 26,
+    "semi_games": 2,
+    "score_delta": 86.2,
+    "rank_delta": 5
+  },
+  {
+    "rank": 13,
     "name": "石井一馬",
     "score": 160.7,
     "games": 39,
@@ -155,10 +168,10 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 39,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
-    "rank": 13,
+    "rank": 14,
     "name": "多井隆晴",
     "score": 123.4,
     "games": 39,
@@ -168,10 +181,10 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 39,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
-    "rank": 14,
+    "rank": 15,
     "name": "鈴木優",
     "score": 114.8,
     "games": 34,
@@ -181,10 +194,10 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 34,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
-    "rank": 15,
+    "rank": 16,
     "name": "白鳥翔",
     "score": 110.2,
     "games": 35,
@@ -194,10 +207,23 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 35,
     "semi_games": 0,
     "score_delta": 0,
+    "rank_delta": -1
+  },
+  {
+    "rank": 17,
+    "name": "佐々木寿人",
+    "score": 107.9,
+    "games": 33,
+    "avg": 2.43,
+    "regular_score": 11.1,
+    "semi_score": 96.8,
+    "regular_games": 30,
+    "semi_games": 3,
+    "score_delta": 32.9,
     "rank_delta": 1
   },
   {
-    "rank": 16,
+    "rank": 18,
     "name": "竹内元太",
     "score": 93.6,
     "games": 35,
@@ -206,50 +232,11 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -58.2,
     "regular_games": 33,
     "semi_games": 2,
-    "score_delta": -68.7,
-    "rank_delta": -4
-  },
-  {
-    "rank": 17,
-    "name": "黒沢咲",
-    "score": 89.2,
-    "games": 27,
-    "avg": 2.42,
-    "regular_score": 109.9,
-    "semi_score": -20.7,
-    "regular_games": 26,
-    "semi_games": 1,
     "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 18,
-    "name": "佐々木寿人",
-    "score": 75,
-    "games": 32,
-    "avg": 2.43,
-    "regular_score": 11.1,
-    "semi_score": 63.9,
-    "regular_games": 30,
-    "semi_games": 2,
-    "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": -2
   },
   {
     "rank": 19,
-    "name": "伊達朱里紗",
-    "score": 20.5,
-    "games": 31,
-    "avg": 2.47,
-    "regular_score": 91.2,
-    "semi_score": -70.7,
-    "regular_games": 30,
-    "semi_games": 1,
-    "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 20,
     "name": "瀬戸熊直樹",
     "score": 7.3,
     "games": 31,
@@ -258,24 +245,24 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 91.1,
     "regular_games": 29,
     "semi_games": 2,
-    "score_delta": 22.3,
+    "score_delta": 0,
+    "rank_delta": 1
+  },
+  {
+    "rank": 20,
+    "name": "東城りお",
+    "score": -1,
+    "games": 30,
+    "avg": 2.5,
+    "regular_score": 6.6,
+    "semi_score": -7.6,
+    "regular_games": 28,
+    "semi_games": 2,
+    "score_delta": 14,
     "rank_delta": 1
   },
   {
     "rank": 21,
-    "name": "東城りお",
-    "score": -15,
-    "games": 29,
-    "avg": 2.5,
-    "regular_score": 6.6,
-    "semi_score": -21.6,
-    "regular_games": 28,
-    "semi_games": 1,
-    "score_delta": 0,
-    "rank_delta": -1
-  },
-  {
-    "rank": 22,
     "name": "鈴木大介",
     "score": -19.6,
     "games": 29,
@@ -284,11 +271,11 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 139.7,
     "regular_games": 27,
     "semi_games": 2,
-    "score_delta": 64.3,
-    "rank_delta": 2
+    "score_delta": 0,
+    "rank_delta": 1
   },
   {
-    "rank": 23,
+    "rank": 22,
     "name": "茅森早香",
     "score": -37.3,
     "games": 27,
@@ -297,11 +284,37 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 21.6,
     "regular_games": 25,
     "semi_games": 2,
-    "score_delta": 13.3,
-    "rank_delta": -1
+    "score_delta": 0,
+    "rank_delta": 1
+  },
+  {
+    "rank": 23,
+    "name": "伊達朱里紗",
+    "score": -41.5,
+    "games": 32,
+    "avg": 2.47,
+    "regular_score": 91.2,
+    "semi_score": -132.7,
+    "regular_games": 30,
+    "semi_games": 2,
+    "score_delta": -62,
+    "rank_delta": -4
   },
   {
     "rank": 24,
+    "name": "本田朋広",
+    "score": -57.6,
+    "games": 37,
+    "avg": 2.54,
+    "regular_score": -92.4,
+    "semi_score": 34.8,
+    "regular_games": 35,
+    "semi_games": 2,
+    "score_delta": 57.7,
+    "rank_delta": 3
+  },
+  {
+    "rank": 25,
     "name": "瑞原明奈",
     "score": -72.3,
     "games": 29,
@@ -314,7 +327,7 @@ window.MLEAGUE_PLAYERS = [
     "rank_delta": -1
   },
   {
-    "rank": 25,
+    "rank": 26,
     "name": "浅井堂岐",
     "score": -101.5,
     "games": 27,
@@ -324,10 +337,10 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 2,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": -1
   },
   {
-    "rank": 26,
+    "rank": 27,
     "name": "逢川恵夢",
     "score": -114.3,
     "games": 26,
@@ -337,20 +350,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "rank": 27,
-    "name": "本田朋広",
-    "score": -115.3,
-    "games": 36,
-    "avg": 2.54,
-    "regular_score": -92.4,
-    "semi_score": -22.9,
-    "regular_games": 35,
-    "semi_games": 1,
-    "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": -1
   },
   {
     "rank": 28,
@@ -362,8 +362,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": 19.1,
     "regular_games": 30,
     "semi_games": 2,
-    "score_delta": 74.1,
-    "rank_delta": 4
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 29,
@@ -376,7 +376,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 22,
     "semi_games": 2,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 30,
@@ -389,7 +389,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 31,
@@ -402,7 +402,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 20,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 32,
@@ -415,7 +415,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": -1
+    "rank_delta": 0
   },
   {
     "rank": 33,
@@ -467,7 +467,7 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 28,
     "semi_games": 0,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "rank": 37,
@@ -479,8 +479,8 @@ window.MLEAGUE_PLAYERS = [
     "semi_score": -14.1,
     "regular_games": 24,
     "semi_games": 3,
-    "score_delta": -17.9,
-    "rank_delta": -1
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 38,
@@ -522,4 +522,4 @@ window.MLEAGUE_PLAYERS = [
     "rank_delta": 0
   }
 ];
-window.MLEAGUE_UPDATED = "2026/04/13";
+window.MLEAGUE_UPDATED = "2026/04/14";
