@@ -69,7 +69,7 @@ function parseRankingTable(html) {
   for (const t of tables) {
     const hasCol   = t.includes('選手名') || t.includes('雀士');
     const rowCount = (t.match(/<tr/gi) || []).length;
-    if (hasCol && rowCount > 30) { target = t; break; }
+    if (hasCol && rowCount > 8) { target = t; break; }
   }
   if (!target && tables.length > 1) target = tables[1];
   if (!target) return [];
@@ -242,25 +242,28 @@ async function downloadChartJs() {
 async function main() {
   const REGULAR_URL = 'https://kinmaweb.jp/mleague-ranking/2025-regular';
   const SEMI_URL    = 'https://kinmaweb.jp/mleague-ranking/2025-semifinal';
+  const FINAL_URL   = 'https://kinmaweb.jp/archives/275195';
   const round1      = v => Math.round(v * 10) / 10;
 
   console.log('====================================');
   console.log('  Mリーグ成績表 自動更新ツール');
   console.log('====================================');
   console.log(`取得先: ${REGULAR_URL}`);
-  console.log(`      + ${SEMI_URL}\n`);
+  console.log(`      + ${SEMI_URL}`);
+  console.log(`      + ${FINAL_URL}\n`);
 
   // 前回スコアを先に読んでおく
   const prevScores = loadPrevScores();
   const hasPrev = Object.keys(prevScores).length > 0;
 
-  // レギュラー・セミファイナルを並行取得
-  let regularHtml, semiHtml;
+  // レギュラー・セミファイナル・ファイナルを並行取得
+  let regularHtml, semiHtml, finalHtml;
   try {
-    process.stdout.write('データ取得中（レギュラー＋セミファイナル並行）... ');
-    [regularHtml, semiHtml] = await Promise.all([
+    process.stdout.write('データ取得中（レギュラー＋セミ＋ファイナル並行）... ');
+    [regularHtml, semiHtml, finalHtml] = await Promise.all([
       fetchUrl(REGULAR_URL),
       fetchUrl(SEMI_URL),
+      fetchUrl(FINAL_URL),
     ]);
     console.log('完了');
   } catch (err) {
@@ -273,28 +276,34 @@ async function main() {
   process.stdout.write('データ解析中... ');
   const regularPlayers = parseRankingTable(regularHtml);
   const semiPlayers    = parseRankingTable(semiHtml);
-  console.log(`レギュラー ${regularPlayers.length}名 / セミファイナル ${semiPlayers.length}名を取得`);
+  const finalPlayers   = parseRankingTable(finalHtml);
+  console.log(`レギュラー ${regularPlayers.length}名 / セミ ${semiPlayers.length}名 / ファイナル ${finalPlayers.length}名を取得`);
 
   if (regularPlayers.length < 10) {
     console.error('\n❌ レギュラーデータが少なすぎます（サイト構造が変わった可能性があります）');
     process.exit(1);
   }
 
-  // セミファイナルをname→playerのMapに変換
-  const semiMap = {};
-  semiPlayers.forEach(p => { semiMap[p.name] = p; });
+  // セミ・ファイナルをname→playerのMapに変換
+  const semiMap  = {};
+  const finalMap = {};
+  semiPlayers.forEach(p  => { semiMap[p.name]  = p; });
+  finalPlayers.forEach(p => { finalMap[p.name] = p; });
 
-  // マージ：レギュラーをベースにセミを合算
+  // マージ：レギュラーをベースにセミ＋ファイナルを合算
   const players = regularPlayers.map(p => {
-    const s = semiMap[p.name] || { score: 0, games: 0 };
+    const s = semiMap[p.name]  || { score: 0, games: 0 };
+    const f = finalMap[p.name] || { score: 0, games: 0 };
     return {
       ...p,
       regular_score: p.score,
       semi_score:    s.score,
-      score:         round1(p.score + s.score),
+      final_score:   f.score,
+      score:         round1(p.score + s.score + f.score),
       regular_games: p.games,
       semi_games:    s.games,
-      games:         p.games + s.games,
+      final_games:   f.games,
+      games:         p.games + s.games + f.games,
     };
   });
 

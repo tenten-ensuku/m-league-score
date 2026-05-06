@@ -282,7 +282,7 @@
   <div class="hero-inner">
     <div class="hero-badge">2025 - 2026 Season</div>
     <img src="https://m-league.jp/assets/media/img/common/logo-row.svg" alt="M.LEAGUE" class="hero-logo">
-    <div class="hero-sub">レギュラーシーズン 個人成績 &amp; ドラフトチーム &amp; 推移グラフ</div>
+    <div class="hero-sub">レギュラー + セミファイナル + ファイナル 個人成績 &amp; ドラフトチーム</div>
     <div class="hero-date">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -323,6 +323,7 @@
             <th>合計PT</th>
             <th>レギュラー</th>
             <th>セミ</th>
+            <th>ファイナル</th>
             <th>前回比</th>
             <th>試合数</th>
             <th>平均着順</th>
@@ -486,6 +487,7 @@ if (!players.length) {
       </td>
       <td class="sub-score">${fmt(p.regular_score ?? p.score)}</td>
       <td class="sub-score ${cls(p.semi_score ?? 0)}">${p.semi_score ? fmt(p.semi_score) : '—'}</td>
+      <td class="sub-score ${cls(p.final_score ?? 0)}">${p.final_score ? fmt(p.final_score) : '—'}</td>
       <td>${deltaCell}</td>
       <td class="games">${p.games}</td>
       <td class="avg-cell ${avgCls(p.avg)}">${p.avg.toFixed(2)}</td>

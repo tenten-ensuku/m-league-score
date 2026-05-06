@@ -12,7 +12,8 @@
       "Bash(node:*)",
       "WebFetch(domain:mj-news.net)",
       "WebFetch(domain:ja.wikipedia.org)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash('C:/Program Files/nodejs/node.exe' -e ' *)"
     ]
   }
 }

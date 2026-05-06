@@ -1,6 +1,10 @@
 // Mリーグ ドラフトチーム 履歴データ（自動生成 - scrape.js が更新します）
 // 収支 = 2×自PT − 他2チームPT の合計
+<<<<<<< Updated upstream
 // 更新日時: 2026/05/05
+=======
+// 更新日時: 2026/05/06
+>>>>>>> Stashed changes
 window.MLEAGUE_HISTORY = [
   {
     "date": "12/9",
@@ -471,7 +475,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -233.2
   },
   {
+<<<<<<< Updated upstream
     "date": "4/9",
+=======
+    "date": "4/10",
+>>>>>>> Stashed changes
     "ten_pt": 719.6,
     "aji_pt": -773,
     "sat_pt": -58.7,
@@ -480,7 +488,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -64
   },
   {
+<<<<<<< Updated upstream
     "date": "4/10",
+=======
+    "date": "4/11",
+>>>>>>> Stashed changes
     "ten_pt": 729.4,
     "aji_pt": -691.5,
     "sat_pt": -150,
@@ -489,7 +501,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -337.9
   },
   {
+<<<<<<< Updated upstream
     "date": "4/13",
+=======
+    "date": "4/14",
+>>>>>>> Stashed changes
     "ten_pt": 660.7,
     "aji_pt": -645.1,
     "sat_pt": -150,
@@ -498,7 +514,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -315.6
   },
   {
+<<<<<<< Updated upstream
     "date": "4/14",
+=======
+    "date": "4/15",
+>>>>>>> Stashed changes
     "ten_pt": 515.9,
     "aji_pt": -612.2,
     "sat_pt": -182,
@@ -507,7 +527,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -267.7
   },
   {
+<<<<<<< Updated upstream
     "date": "4/16",
+=======
+    "date": "4/17",
+>>>>>>> Stashed changes
     "ten_pt": 640.9,
     "aji_pt": -716.5,
     "sat_pt": -182,
@@ -516,7 +540,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -288.4
   },
   {
+<<<<<<< Updated upstream
     "date": "4/17",
+=======
+    "date": "4/18",
+>>>>>>> Stashed changes
     "ten_pt": 596.2,
     "aji_pt": -793.1,
     "sat_pt": -139.9,
@@ -525,7 +553,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -82.9
   },
   {
+<<<<<<< Updated upstream
     "date": "4/20",
+=======
+    "date": "4/21",
+>>>>>>> Stashed changes
     "ten_pt": 540.1,
     "aji_pt": -824.7,
     "sat_pt": -104.6,
@@ -534,7 +566,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": 75.4
   },
   {
+<<<<<<< Updated upstream
     "date": "4/21",
+=======
+    "date": "4/22",
+>>>>>>> Stashed changes
     "ten_pt": 470.5,
     "aji_pt": -825.4,
     "sat_pt": -125.7,
@@ -543,7 +579,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": 103.5
   },
   {
+<<<<<<< Updated upstream
     "date": "4/23",
+=======
+    "date": "4/24",
+>>>>>>> Stashed changes
     "ten_pt": 502.7,
     "aji_pt": -729.1,
     "sat_pt": -74.5,
@@ -552,7 +592,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": 77.4
   },
   {
+<<<<<<< Updated upstream
     "date": "4/24",
+=======
+    "date": "4/25",
+>>>>>>> Stashed changes
     "ten_pt": 512.8,
     "aji_pt": -756.8,
     "sat_pt": -161.3,
@@ -561,7 +605,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -78.6
   },
   {
+<<<<<<< Updated upstream
     "date": "4/27",
+=======
+    "date": "4/28",
+>>>>>>> Stashed changes
     "ten_pt": 472.4,
     "aji_pt": -615.6,
     "sat_pt": -284,
@@ -570,7 +618,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -424.8
   },
   {
+<<<<<<< Updated upstream
     "date": "4/28",
+=======
+    "date": "4/29",
+>>>>>>> Stashed changes
     "ten_pt": 458.6,
     "aji_pt": -561,
     "sat_pt": -292.9,
@@ -579,6 +631,7 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -483.4
   },
   {
+<<<<<<< Updated upstream
     "date": "4/30",
     "ten_pt": 518.7,
     "aji_pt": -535.6,
@@ -588,6 +641,8 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -640.3
   },
   {
+=======
+>>>>>>> Stashed changes
     "date": "5/1",
     "ten_pt": 518.7,
     "aji_pt": -535.6,
@@ -597,7 +652,11 @@ window.MLEAGUE_HISTORY = [
     "sat_bk": -640.3
   },
   {
+<<<<<<< Updated upstream
     "date": "5/4",
+=======
+    "date": "5/2",
+>>>>>>> Stashed changes
     "ten_pt": 518.7,
     "aji_pt": -535.6,
     "sat_pt": -328.6,
@@ -613,6 +672,21 @@ window.MLEAGUE_HISTORY = [
     "ten_bk": 1901.6,
     "aji_bk": -1261.3,
     "sat_bk": -640.3
+<<<<<<< Updated upstream
   }
 ];
 window.MLEAGUE_HISTORY_UPDATED = "2026/05/05";
+=======
+  },
+  {
+    "date": "5/6",
+    "ten_pt": 510.9,
+    "aji_pt": -427.2,
+    "sat_pt": -363.9,
+    "ten_bk": 1812.9,
+    "aji_bk": -1001.4,
+    "sat_bk": -811.5
+  }
+];
+window.MLEAGUE_HISTORY_UPDATED = "2026/05/06";
+>>>>>>> Stashed changes
