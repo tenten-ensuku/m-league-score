@@ -13,8 +13,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 38,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 2,
@@ -28,8 +28,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 34,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 3,
@@ -43,8 +43,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 33,
     "semi_games": 4,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 4,
@@ -58,8 +58,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 33,
     "semi_games": 6,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 5,
@@ -73,8 +73,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 4,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 6,
@@ -88,8 +88,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 7,
@@ -103,8 +103,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 36,
     "semi_games": 7,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 8,
@@ -118,8 +118,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 9,
@@ -133,8 +133,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 36,
     "semi_games": 5,
     "final_games": 2,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 10,
@@ -148,8 +148,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 11,
@@ -163,8 +163,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 35,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 12,
@@ -178,8 +178,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 39,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 13,
@@ -193,8 +193,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 33,
     "semi_games": 6,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 14,
@@ -208,8 +208,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 39,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 15,
@@ -223,8 +223,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 34,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 16,
@@ -238,8 +238,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 35,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 17,
@@ -253,8 +253,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 30,
     "semi_games": 7,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 18,
@@ -268,8 +268,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 30,
     "semi_games": 4,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 19,
@@ -283,8 +283,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 37,
     "semi_games": 5,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 20,
@@ -298,8 +298,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 5,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 21,
@@ -313,8 +313,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 35,
     "semi_games": 6,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 22,
@@ -328,8 +328,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 23,
@@ -343,8 +343,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 29,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 24,
@@ -358,8 +358,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 4,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 25,
@@ -373,8 +373,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 29,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 26,
@@ -388,8 +388,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 28,
     "semi_games": 5,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 27,
@@ -403,8 +403,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 28,
@@ -418,8 +418,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 30,
     "semi_games": 4,
     "final_games": 1,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 29,
@@ -433,8 +433,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 22,
     "semi_games": 3,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 30,
@@ -448,8 +448,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 31,
@@ -463,8 +463,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 20,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 32,
@@ -478,8 +478,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 33,
@@ -493,8 +493,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 32,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 34,
@@ -508,8 +508,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 26,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 35,
@@ -523,8 +523,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 24,
     "semi_games": 6,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 36,
@@ -538,8 +538,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 27,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 37,
@@ -553,8 +553,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 28,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 38,
@@ -568,8 +568,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 32,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 39,
@@ -583,8 +583,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 25,
     "semi_games": 0,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "rank": 40,
@@ -598,8 +598,8 @@ window.MLEAGUE_PLAYERS = [
     "regular_games": 29,
     "semi_games": 4,
     "final_games": 0,
-    "score_delta": null,
-    "rank_delta": null
+    "score_delta": 0,
+    "rank_delta": 0
   }
 ];
 window.MLEAGUE_UPDATED = "2026/05/06";
