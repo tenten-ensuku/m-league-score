@@ -1,9 +1,11 @@
 name: Mリーグ データ自動更新
 
 on:
-  schedule:
-    - cron: '0 17 * * 1,2,4,5'  # 月火木金 26:00 JST = 火水金土 2:00 JST (UTC 17:00)
-  workflow_dispatch:              # GitHub画面からの手動実行も可能
+  # シーズン終了につき自動実行を停止（2026/05停止）
+  # 来シーズン再開時は下記の cron をアンコメントすること
+  # schedule:
+  #   - cron: '0 17 * * 1,2,4,5'  # 月火木金 26:00 JST = 火水金土 2:00 JST (UTC 17:00)
+  workflow_dispatch:              # GitHub画面からの手動実行のみ可能
 
 permissions:
   contents: write
