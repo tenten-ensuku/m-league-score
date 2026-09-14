@@ -15,12 +15,16 @@ if %errorlevel% neq 0 (
   exit /b 1
 )
 
+call npm.cmd ci
+if %errorlevel% neq 0 exit /b 1
+call npm.cmd run check
+if %errorlevel% neq 0 exit /b 1
 "%NODE_PATH%\node.exe" scrape.js
 
 if %errorlevel% == 0 (
   echo.
-  echo Opening index.html ...
-  start "" "%~dp0index.html"
+  echo Opening dist\index.html ...
+  start "" "%~dp0dist\index.html"
 ) else (
   echo.
   echo [ERROR] scrape.js failed.
