@@ -1,0 +1,22 @@
+{
+  "name": "m-league-score",
+  "version": "2.0.0",
+  "private": true,
+  "description": "M.LEAGUE fantasy draft scores with verified, season-isolated history",
+  "scripts": {
+    "update": "node scrape.js",
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node scripts/browser-check.js",
+    "check": "npm test && npm run build"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "chart.js": "4.4.4",
+    "cheerio": "1.1.2",
+    "lucide": "0.468.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

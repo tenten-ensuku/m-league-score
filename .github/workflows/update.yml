@@ -1,43 +1,61 @@
 name: Mリーグ データ自動更新
 
 on:
-  # シーズン終了につき自動実行を停止（2026/05停止）
-  # 来シーズン再開時は下記の cron をアンコメントすること
-  # schedule:
-  #   - cron: '0 17 * * 1,2,4,5'  # 月火木金 26:00 JST = 火水金土 2:00 JST (UTC 17:00)
-  workflow_dispatch:              # GitHub画面からの手動実行のみ可能
+  schedule:
+    # Tue/Wed/Fri/Sat 02:00 JST, with a 06:00 retry for delayed source updates.
+    - cron: '0 17,21 * * 1,2,4,5'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: m-league-production-update
+  cancel-in-progress: false
+
 jobs:
   update:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
     steps:
-      - name: リポジトリをチェックアウト
-        uses: actions/checkout@v4
-
-      - name: Node.js をセットアップ
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: '20'
-
-      - name: スクレイプ実行
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: 収集・履歴保護のテスト
+        run: npm test
+      - name: 成績取得・照合・生成
         run: node scrape.js
-
-      - name: 変更をコミット & プッシュ
+      - name: 変更をコミット
+        id: changes
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.js history.js
-          git diff --staged --quiet || git commit -m "データ更新: $(TZ='Asia/Tokyo' date '+%Y/%m/%d')"
-          git push
-
-      - name: Netlify にデプロイ
+          git add data/seasons app-data.js data.js history.js
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "データ更新: $(TZ=Asia/Tokyo date '+%Y/%m/%d')"
+            # A concurrent upstream change must stop this run. Never merge generated files.
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: 検証済みサイトをNetlifyへ公開
+        if: steps.changes.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          npm install -g netlify-cli
-          netlify deploy --prod --dir=.
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$(git rev-parse HEAD)"
+          npx --yes netlify-cli@24.0.1 deploy --prod --dir=dist --no-build
+      - name: 結果
+        if: always()
+        run: |
+          echo "## Mリーグ更新" >> "$GITHUB_STEP_SUMMARY"
+          echo "Status: ${{ job.status }}. 取得・検証失敗時は本番と既存履歴を維持します。" >> "$GITHUB_STEP_SUMMARY"

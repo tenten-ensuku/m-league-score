@@ -1,0 +1,91 @@
+{
+  "season": "2026-27",
+  "source": "https://m-league-draft-ten-aji-satoshi.naga-study.workers.dev/",
+  "revision": 30,
+  "updatedAt": "2026-09-12T14:04:17.772Z",
+  "picks": [
+    "konami-3",
+    "drivens-4",
+    "sakura-2",
+    "pirates-4",
+    "pirates-3",
+    "drivens-1",
+    "konami-4",
+    "jets-2",
+    "pirates-1",
+    "beast-3",
+    "drivens-3",
+    "konami-1",
+    "phoenix-2",
+    "abemas-1",
+    "pirates-2",
+    "abemas-2",
+    "jets-3",
+    "phoenix-3",
+    "jets-1",
+    "drivens-2",
+    "furinkazan-2",
+    "sakura-4",
+    "abemas-3",
+    "furinkazan-1",
+    "furinkazan-4",
+    "sakura-3",
+    "sakura-1",
+    "raiden-4",
+    "beast-1",
+    "beast-4"
+  ],
+  "teams": [
+    {
+      "id": "ten",
+      "name": "てん",
+      "color": "#a96416",
+      "members": [
+        "堀慎吾",
+        "朝倉康心",
+        "瑞原明奈",
+        "下石戟",
+        "鈴木優",
+        "白鳥翔",
+        "勝又健志",
+        "尻無濱航",
+        "岡田紗佳",
+        "本田朋広"
+      ]
+    },
+    {
+      "id": "aji",
+      "name": "あじ",
+      "color": "#16734b",
+      "members": [
+        "伊達朱里紗",
+        "園田賢",
+        "滝沢和典",
+        "佐々木寿人",
+        "醍醐大",
+        "竹内元太",
+        "石井一馬",
+        "二階堂亜樹",
+        "内川幸太郎",
+        "東城りお"
+      ]
+    },
+    {
+      "id": "sat",
+      "name": "さとし",
+      "color": "#2969bd",
+      "members": [
+        "渡辺太",
+        "仲林圭",
+        "三浦智博",
+        "浅見真紀",
+        "多井隆晴",
+        "逢川恵夢",
+        "鈴木たろう",
+        "松本吉弘",
+        "阿久津翔太",
+        "鈴木大介"
+      ]
+    }
+  ]
+}
