@@ -136,7 +136,7 @@
     document.querySelectorAll('.big-score').forEach(element => {
       element.style.fontSize = '';
       let size = parseFloat(getComputedStyle(element).fontSize);
-      while (element.scrollWidth > element.clientWidth && size > 16) element.style.fontSize = `${--size}px`;
+      while (element.scrollWidth > element.clientWidth && size > 12) element.style.fontSize = `${--size}px`;
     });
   }
 
