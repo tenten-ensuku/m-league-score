@@ -57,7 +57,9 @@ netlify deploy --dir=dist --no-build
 
 ## 自動更新
 
-`update.yml` は火・水・金・土の02:00 JST、掲載遅延の再確認として06:00 JSTに実行します（試合日の月・火・木・金26時）。GitHubのschedule実行時刻は遅延することがあります。
+`update.yml` の起動予定は火・水・金・土の02:07、02:37、03:07、03:37、06:07 JSTです（試合日の月・火・木・金の深夜から翌朝）。毎時ちょうどの混雑を避け、起動や掲載の遅延に備えて複数回確認します。GitHub Actionsは定刻実行を保証しておらず、数時間遅れる場合もあります。画面の更新日時は、取得の試行時刻ではなく最後に成績が変わった時刻です。
+
+2026-09-16に起動遅延を確認しました。前日の02:00予定は05:43 JSTに起動し、当日の02:00予定は03:35 JST時点で未起動でした。取得・照合は正常で、手動実行で9月15日分を反映しました。[実行履歴](https://github.com/tenten-ensuku/m-league-score/actions/workflows/update.yml)で開始時刻と結果を確認できます。急ぎの場合は同画面の「Run workflow」または `gh workflow run update.yml --repo tenten-ensuku/m-league-score --ref main` で既存の検証・公開経路を起動します。
 
 `npm ci` → テスト → 取得・照合・生成 → 正本と生成物をcommit/push → Netlifyへ一括deploy。スコアの変化がない定時実行ではdeployしません。手動実行は変化がなくてもdeployします。利用する既存Secretsは `NETLIFY_AUTH_TOKEN` と `NETLIFY_SITE_ID` です。
 

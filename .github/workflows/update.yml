@@ -2,8 +2,10 @@ name: Mリーグ データ自動更新
 
 on:
   schedule:
-    # Tue/Wed/Fri/Sat 02:00 JST, with a 06:00 retry for delayed source updates.
-    - cron: '0 17,21 * * 1,2,4,5'
+    # Tue/Wed/Fri/Sat 02:07, 02:37, 03:07, 03:37 JST; avoid the busy hour boundary.
+    # GitHub schedules are best-effort, so retry both delayed starts and source updates.
+    - cron: '7,37 17,18 * * 1,2,4,5'
+    - cron: '7 21 * * 1,2,4,5'
   workflow_dispatch:
 
 permissions:
@@ -31,6 +33,8 @@ jobs:
         run: npm test
       - name: 成績取得・照合・生成
         run: node scrape.js
+      - name: 公開ファイルの検証・ビルド
+        run: npm run build
       - name: 変更をコミット
         id: changes
         shell: bash
