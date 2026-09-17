@@ -32,6 +32,17 @@ window.MLEAGUE_HISTORY = [
     "sat_pt": -48.3,
     "sat_bk": -94.7,
     "dateKind": "result"
+  },
+  {
+    "date": "2026-09-17",
+    "observedAt": "2026-09-17T20:08:31.091Z",
+    "ten_pt": 94.5,
+    "ten_bk": 285.9,
+    "aji_pt": 17.3,
+    "aji_bk": 54.3,
+    "sat_pt": -114.2,
+    "sat_bk": -340.2,
+    "dateKind": "result"
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-09-15";
+window.MLEAGUE_HISTORY_UPDATED = "2026-09-17";
