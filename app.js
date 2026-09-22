@@ -230,6 +230,7 @@
     const s = season();
     $('source-content').innerHTML = `<div class="formula"><p><b>チームPT</b> = 指名10選手の個人ポイント合計</p><p><b>通算</b> = レギュラー + セミファイナル + ファイナル</p><p><b>収支</b> = 2 × 自チームPT − 他2チームのPT合計</p></div><div class="source-list">${stageKeys.map(k => `<div><b>${labels[k]}</b>${s.legacy ? '<small>昨季の保存データ</small>' : s.stages[k] ? s.stages[k].sources.map(src => `<a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">${esc(src.name)}${icon('arrow-up-right')}</a>`).join('') : '<small>未開始</small>'}</div>`).join('')}</div><p class="source-meta">前回比は、直前の記録日からの増減です。同日中の追加更新は同じ記録日に反映します。試合がない日の重複記録はありません。</p><p class="source-meta">平均着順は全ステージの着順回数から計算しています。昨季は保存されているレギュラー平均着順を表示します。</p>${s.draftSource ? `<p class="source-meta">ドラフト確定 ${esc(new Date(s.draftSource.updatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' }))} · 30名</p>` : '<p class="source-meta"><a href="archive/2025-26/index.html">昨季の旧アプリを開く</a></p>'}<p class="source-meta">自動取得予定: 火・水・金・土 2:07、2:37、3:07、3:37、6:07 JST。起動や取得元の掲載状況により遅れる場合があります。</p><p class="source-meta"><a href="https://github.com/tenten-ensuku/m-league-score/actions/workflows/update.yml" target="_blank" rel="noopener noreferrer">自動更新の実行状況${icon('arrow-up-right')}</a></p>`;
     icons();
+    $('source-content').insertAdjacentHTML('beforeend', (s.warnings || []).map(warning => `<p class="source-meta">${esc(warning)}</p>`).join(''));
     $('source-dialog').showModal();
   }
 

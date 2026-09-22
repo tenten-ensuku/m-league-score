@@ -58,6 +58,75 @@ test('source disagreement stops instead of substituting zeros or stale points', 
   assert.throws(() => reconcile(k, official()), /Sources disagree/);
 });
 
+const incidentOfficial = fs.readFileSync(path.join(__dirname, 'fixtures/official-2026-09-22.html'), 'utf8');
+const incidentKinma = fs.readFileSync(path.join(__dirname, 'fixtures/kinma-2026-09-22.html'), 'utf8');
+const incidentGames = fs.readFileSync(path.join(__dirname, 'fixtures/games-2026-09-22.html'), 'utf8');
+const { GAMES_URL, recoverRegularHistory } = require('../lib/recovery');
+const incidentFetcher = async url => url === GAMES_URL ? incidentGames : url === config.stages.regular.kinmaUrl ? incidentKinma : incidentOfficial;
+
+test('real September 22 average-only discrepancy uses verified official placements', () => {
+  const k = parseKinma(incidentKinma, config, 'regular', config.stages.regular.kinmaUrl);
+  const o = parseOfficial(incidentOfficial, config, 'regular');
+  const warnings = [];
+  const rows = reconcile(k, o, { warnings });
+  const player = rows.find(p => p.name === '逢川恵夢');
+  assert.equal(k.players.find(p => p.name === player.name).avg, 2);
+  assert.deepEqual([player.score, player.games, player.avg, player.placements], [53.9, 2, 1.5, [1, 1, 0, 0]]);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /逢川恵夢.*2.00.*1.50/);
+  for (const field of ['score', 'games']) {
+    const altered = structuredClone(k);
+    altered.players.find(p => p.name === player.name)[field]++;
+    assert.throws(() => reconcile(altered, o), /Sources disagree: 逢川恵夢.*Kinma PT=.*official PT=/);
+  }
+  for (const placements of [undefined, [0, 2, 0, 0], [1, 0, 0, 0], [1.5, 0.5, 0, 0]]) {
+    const altered = structuredClone(o);
+    altered.players.find(p => p.name === player.name).placements = placements;
+    assert.throws(() => reconcile(k, altered), /Unverified official average/);
+  }
+});
+
+test('official daily results recover every missed day without changing existing snapshots', async t => {
+  const dir = tempRepo(t);
+  const next = await collect({ root: dir, fetcher: incidentFetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true, recoverHistory: true });
+  assert.deepEqual(next.history.map(r => r.date), ['2026-09-13', '2026-09-14', '2026-09-15', '2026-09-17', '2026-09-18', '2026-09-21', '2026-09-22']);
+  assert.deepEqual(next.history.slice(0, 2), original.history);
+  assert.equal(next.history.at(-2).recovery.matchIds.length, 4);
+  assert.equal(next.history.at(-1).recovery.matchIds.length, 4);
+  assert.equal(next.players.reduce((n, p) => n + p.games, 0) / 4, 16);
+  assert.equal(next.warnings.length, 1);
+  validateSeason(next);
+  const corrupt = load(incidentGames);
+  corrupt('#js-modal-key20260921-6 .p-gamesResult__point').first().text('102.0pt');
+  assert.throws(() => recoverRegularHistory(original, next, corrupt.html()), /Invalid match result/);
+  const missing = load(incidentGames);
+  missing('#js-modal-key20260921-6').remove();
+  assert.throws(() => recoverRegularHistory(original, next, missing.html()), /disagrees with standings/);
+  await assert.rejects(collect({ root: dir, fetcher: async url => url === GAMES_URL ? missing.html() : incidentFetcher(url), now: new Date('2026-09-22T17:15:00Z'), recoverHistory: true }), /disagrees with standings/);
+  assert.equal(fs.existsSync(path.join(dir, 'app-data.js')), false);
+  const duplicate = load(incidentGames);
+  duplicate('body').append(duplicate('#js-modal-key20260921-6').toString());
+  assert.throws(() => recoverRegularHistory(original, next, duplicate.html()), /duplicate result ID/);
+  const crossed = incidentGames.replaceAll('js-modal-key2026', 'js-modal-key2025');
+  assert.throws(() => recoverRegularHistory(original, next, crossed), /Missing daily results/);
+  assert.deepEqual(readJSON(path.join(dir, 'data/seasons/2026-27.json')), original);
+});
+
+test('warning recovery does not reset score dates, history or previous-match deltas', async t => {
+  const dir = tempRepo(t);
+  const file = path.join(dir, 'data/seasons/2026-27.json');
+  const next = await collect({ root: dir, fetcher: incidentFetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true });
+  writeJSON(file, next);
+  const fixed = load(incidentKinma);
+  fixed('tr').filter((_, tr) => fixed(tr).text().includes('逢川恵夢')).find('td').last().text('1.50');
+  const fetcher = async url => url === config.stages.regular.kinmaUrl ? fixed.html() : incidentOfficial;
+  const corrected = await collect({ root: dir, fetcher, now: new Date('2026-09-23T17:15:00Z'), dryRun: true });
+  assert.deepEqual(corrected.warnings, []);
+  assert.deepEqual(corrected.history, next.history);
+  assert.equal(corrected.updatedAt, next.updatedAt);
+  assert.equal(corrected.resultDate, next.resultDate);
+});
+
 test('game counts may grow but never disappear or go backwards', () => {
   const a = official();
   const b = official();

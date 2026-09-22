@@ -7,7 +7,7 @@ const { fetchText, officialURL, parseOfficial, parseKinma, reconcile } = require
 const { readJSON, readAssignment, writeJSON, fingerprint } = require('./lib/store');
 const { STAGES, aggregate, validateDraft, validateSeason, validateProgress, snapshot, updateHistory, jstDate } = require('./lib/model');
 
-async function collect({ root = __dirname, fetcher = fetchText, now = new Date(), initialize = false, dryRun = false } = {}) {
+async function collect({ root = __dirname, fetcher = fetchText, now = new Date(), initialize = false, dryRun = false, recoverHistory = false } = {}) {
   const statePath = path.join(root, `data/seasons/${config.id}.json`);
   const exists = fs.existsSync(statePath);
   if (!exists && !initialize) throw new Error('Season state missing. Use --init only when creating a reviewed new season.');
@@ -28,6 +28,7 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   const regularHtml = await fetcher(officialURL(config.stages.regular.officialId));
   const regular = parseOfficial(regularHtml, config, 'regular');
   const stages = {};
+  const warnings = [];
   const observedAt = now.toISOString();
   for (const key of STAGES) {
     const definition = config.stages[key];
@@ -43,7 +44,9 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
     const sources = [{ name: 'Mリーグ公式', url: official.source }];
     if (definition.kinmaUrl) {
       const kinma = parseKinma(await fetcher(definition.kinmaUrl), config, key, definition.kinmaUrl);
-      players = reconcile(kinma, official);
+      const stageWarnings = [];
+      players = reconcile(kinma, official, { warnings: stageWarnings });
+      warnings.push(...stageWarnings.map(warning => `${definition.label}: ${warning}`));
       resultDate = kinma.resultDate;
       sources.unshift({ name: 'キンマweb', url: definition.kinmaUrl });
     }
@@ -54,10 +57,15 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   }
   const signature = value => Object.fromEntries(STAGES.map(k => [k, value[k] ? [...value[k].players].sort((a, b) => a.name.localeCompare(b.name)) : null]));
   const changed = !previous || fingerprint(signature(previous.stages)) !== fingerprint(signature(stages));
+  for (const warning of warnings) console.warn(warning);
   if (!changed) {
-    if (!dryRun) require('./scripts/build').build(root);
+    const next = { ...previous, warnings };
+    if (!dryRun) {
+      if (fingerprint(previous.warnings || []) !== fingerprint(warnings)) writeJSON(statePath, next);
+      require('./scripts/build').build(root);
+    }
     console.log('Verified: no score changes. History and previous-match deltas retained.');
-    return previous;
+    return next;
   }
   const players = aggregate(config.players, stages);
   const activeStage = [...STAGES].reverse().find(k => stages[k]?.status === 'started') || 'regular';
@@ -73,7 +81,11 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   }
   const newSnapshot = snapshot(resultDate, players, draftFile.teams, observedAt);
   newSnapshot.dateKind = active.resultDate ? 'result' : 'observed';
-  const next = { schemaVersion: 2, id: config.id, status: 'active', activeStage, updatedAt: observedAt, resultDate, dateKind: newSnapshot.dateKind, roster: config.players, teams: config.teams.map(({ names, ...t }) => t), draft: draftFile.teams, draftSource: { url: draftFile.source, revision: draftFile.revision, updatedAt: draftFile.updatedAt }, stages, players, history: updateHistory(history, newSnapshot), warnings: [] };
+  const next = { schemaVersion: 2, id: config.id, status: 'active', activeStage, updatedAt: observedAt, resultDate, dateKind: newSnapshot.dateKind, roster: config.players, teams: config.teams.map(({ names, ...t }) => t), draft: draftFile.teams, draftSource: { url: draftFile.source, revision: draftFile.revision, updatedAt: draftFile.updatedAt }, stages, players, history: updateHistory(history, newSnapshot), warnings };
+  if (recoverHistory) {
+    const { recoverRegularHistory, GAMES_URL } = require('./lib/recovery');
+    next.history = recoverRegularHistory(previous, next, await fetcher(GAMES_URL));
+  }
   validateSeason(next);
   if (!dryRun) {
     // Commit the canonical season and all snapshots as one atomic replacement.
@@ -84,8 +96,9 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   return next;
 }
 
-if (require.main === module) collect({ initialize: process.argv.includes('--init'), dryRun: process.argv.includes('--dry-run') }).catch(error => {
+if (require.main === module) collect({ initialize: process.argv.includes('--init'), dryRun: process.argv.includes('--dry-run'), recoverHistory: process.argv.includes('--recover-history') }).catch(error => {
   console.error(`Update stopped; published data retained. ${error.message}`);
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n### 更新停止の理由\n\n${error.message}\n\n本番への公開を停止しました。詳細は実行ログを確認してください。\n`);
   process.exitCode = 1;
 });
 
