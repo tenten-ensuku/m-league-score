@@ -94,6 +94,17 @@ window.MLEAGUE_HISTORY = [
         "js-modal-key20260922-8/2"
       ]
     }
+  },
+  {
+    "date": "2026-09-24",
+    "observedAt": "2026-09-24T19:20:07.539Z",
+    "ten_pt": 175.1,
+    "ten_bk": 258.4,
+    "aji_pt": 6.1,
+    "aji_bk": -248.6,
+    "sat_pt": 85.7,
+    "sat_bk": -9.8,
+    "dateKind": "result"
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-09-22";
+window.MLEAGUE_HISTORY_UPDATED = "2026-09-24";
