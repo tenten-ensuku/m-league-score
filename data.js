@@ -4,12 +4,12 @@ window.MLEAGUE_PLAYERS = [
     "id": "abemas-1",
     "name": "多井隆晴",
     "teamId": "abemas",
-    "score": 172.5,
-    "games": 2,
-    "avg": 1,
-    "regular_score": 172.5,
-    "regular_games": 2,
-    "regular_avg": 1,
+    "score": 183.5,
+    "games": 3,
+    "avg": 1.33,
+    "regular_score": 183.5,
+    "regular_games": 3,
+    "regular_avg": 1.3333333333333333,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -18,7 +18,7 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 1,
-    "score_delta": 0,
+    "score_delta": 11,
     "rank_delta": 0
   },
   {
@@ -39,8 +39,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 2,
-    "score_delta": 53.2,
-    "rank_delta": 2
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "id": "sakura-4",
@@ -60,8 +60,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 3,
-    "score_delta": 57.7,
-    "rank_delta": 3
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "id": "pirates-4",
@@ -81,29 +81,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 4,
-    "score_delta": 74,
-    "rank_delta": 4
-  },
-  {
-    "id": "beast-4",
-    "name": "東城りお",
-    "teamId": "beast",
-    "score": 88.6,
-    "games": 2,
-    "avg": 2,
-    "regular_score": 88.6,
-    "regular_games": 2,
-    "regular_avg": 2,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
-    "rank": 5,
     "score_delta": 0,
-    "rank_delta": -2
+    "rank_delta": 0
   },
   {
     "id": "raiden-2",
@@ -122,9 +101,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 6,
-    "score_delta": -18.1,
-    "rank_delta": -4
+    "rank": 5,
+    "score_delta": 0,
+    "rank_delta": 1
   },
   {
     "id": "konami-1",
@@ -143,20 +122,20 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 7,
+    "rank": 6,
     "score_delta": 0,
-    "rank_delta": -2
+    "rank_delta": 1
   },
   {
-    "id": "furinkazan-2",
-    "name": "勝又健志",
-    "teamId": "furinkazan",
-    "score": 77.6,
+    "id": "beast-4",
+    "name": "東城りお",
+    "teamId": "beast",
+    "score": 71.4,
     "games": 3,
-    "avg": 1.67,
-    "regular_score": 77.6,
+    "avg": 2.33,
+    "regular_score": 71.4,
     "regular_games": 3,
-    "regular_avg": 1.6666666666666667,
+    "regular_avg": 2.3333333333333335,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -164,9 +143,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 8,
-    "score_delta": 9.5,
-    "rank_delta": -1
+    "rank": 7,
+    "score_delta": -17.2,
+    "rank_delta": -2
   },
   {
     "id": "sakura-2",
@@ -185,19 +164,40 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 9,
-    "score_delta": 60.9,
-    "rank_delta": 11
+    "rank": 8,
+    "score_delta": 0,
+    "rank_delta": 1
   },
   {
-    "id": "phoenix-1",
-    "name": "茅森早香",
-    "teamId": "phoenix",
-    "score": 40.3,
-    "games": 2,
+    "id": "konami-2",
+    "name": "高宮まり",
+    "teamId": "konami",
+    "score": 55.9,
+    "games": 1,
+    "avg": 1,
+    "regular_score": 55.9,
+    "regular_games": 1,
+    "regular_avg": 1,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 9,
+    "score_delta": 55.9,
+    "rank_delta": 9
+  },
+  {
+    "id": "furinkazan-1",
+    "name": "二階堂亜樹",
+    "teamId": "furinkazan",
+    "score": 43.5,
+    "games": 3,
     "avg": 2,
-    "regular_score": 40.3,
-    "regular_games": 2,
+    "regular_score": 43.5,
+    "regular_games": 3,
     "regular_avg": 2,
     "semi_score": 0,
     "semi_games": 0,
@@ -207,18 +207,18 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 10,
-    "score_delta": 0,
+    "score_delta": 4.5,
     "rank_delta": 1
   },
   {
-    "id": "furinkazan-1",
-    "name": "二階堂亜樹",
-    "teamId": "furinkazan",
-    "score": 39,
-    "games": 2,
+    "id": "sakura-1",
+    "name": "岡田紗佳",
+    "teamId": "sakura",
+    "score": 39.2,
+    "games": 3,
     "avg": 2,
-    "regular_score": 39,
-    "regular_games": 2,
+    "regular_score": 39.2,
+    "regular_games": 3,
     "regular_avg": 2,
     "semi_score": 0,
     "semi_games": 0,
@@ -228,8 +228,29 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 11,
-    "score_delta": 0,
-    "rank_delta": 1
+    "score_delta": 60.2,
+    "rank_delta": 14
+  },
+  {
+    "id": "furinkazan-2",
+    "name": "勝又健志",
+    "teamId": "furinkazan",
+    "score": 31.9,
+    "games": 4,
+    "avg": 2.25,
+    "regular_score": 31.9,
+    "regular_games": 4,
+    "regular_avg": 2.25,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 12,
+    "score_delta": -45.7,
+    "rank_delta": -4
   },
   {
     "id": "jets-3",
@@ -248,9 +269,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 12,
-    "score_delta": -16.6,
-    "rank_delta": -3
+    "rank": 13,
+    "score_delta": 0,
+    "rank_delta": -1
   },
   {
     "id": "raiden-4",
@@ -269,9 +290,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 13,
+    "rank": 14,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
     "id": "beast-3",
@@ -290,9 +311,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 14,
-    "score_delta": 5.9,
-    "rank_delta": 2
+    "rank": 15,
+    "score_delta": 0,
+    "rank_delta": -1
   },
   {
     "id": "drivens-4",
@@ -311,9 +332,30 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 15,
+    "rank": 16,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": -1
+  },
+  {
+    "id": "konami-4",
+    "name": "滝沢和典",
+    "teamId": "konami",
+    "score": 8.2,
+    "games": 3,
+    "avg": 2.33,
+    "regular_score": 8.2,
+    "regular_games": 3,
+    "regular_avg": 2.3333333333333335,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 17,
+    "score_delta": 52.3,
+    "rank_delta": 13
   },
   {
     "id": "raiden-3",
@@ -332,9 +374,30 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 16,
+    "rank": 18,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -2
+  },
+  {
+    "id": "pirates-1",
+    "name": "瑞原明奈",
+    "teamId": "pirates",
+    "score": 6.1,
+    "games": 3,
+    "avg": 2.33,
+    "regular_score": 6.1,
+    "regular_games": 3,
+    "regular_avg": 2.3333333333333335,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 19,
+    "score_delta": 17.4,
+    "rank_delta": 2
   },
   {
     "id": "pirates-2",
@@ -353,51 +416,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 17,
+    "rank": 20,
     "score_delta": 0,
-    "rank_delta": 1
-  },
-  {
-    "id": "konami-2",
-    "name": "高宮まり",
-    "teamId": "konami",
-    "score": 0,
-    "games": 0,
-    "avg": null,
-    "regular_score": 0,
-    "regular_games": 0,
-    "regular_avg": null,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
-    "rank": 18,
-    "score_delta": 0,
-    "rank_delta": 1
-  },
-  {
-    "id": "pirates-3",
-    "name": "仲林圭",
-    "teamId": "pirates",
-    "score": -7.2,
-    "games": 4,
-    "avg": 2.25,
-    "regular_score": -7.2,
-    "regular_games": 4,
-    "regular_avg": 2.25,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
-    "rank": 19,
-    "score_delta": 5.5,
-    "rank_delta": 4
+    "rank_delta": -3
   },
   {
     "id": "furinkazan-4",
@@ -416,30 +437,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 20,
-    "score_delta": -50.2,
-    "rank_delta": -10
-  },
-  {
-    "id": "pirates-1",
-    "name": "瑞原明奈",
-    "teamId": "pirates",
-    "score": -11.3,
-    "games": 2,
-    "avg": 2.5,
-    "regular_score": -11.3,
-    "regular_games": 2,
-    "regular_avg": 2.5,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
     "rank": 21,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
     "id": "drivens-3",
@@ -459,19 +459,19 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 22,
-    "score_delta": -1.8,
-    "rank_delta": 2
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
-    "id": "beast-2",
-    "name": "中田花奈",
-    "teamId": "beast",
-    "score": -17.4,
+    "id": "phoenix-4",
+    "name": "佐野ひなこ",
+    "teamId": "phoenix",
+    "score": -18.2,
     "games": 3,
-    "avg": 3,
-    "regular_score": -17.4,
+    "avg": 2.67,
+    "regular_score": -18.2,
     "regular_games": 3,
-    "regular_avg": 3,
+    "regular_avg": 2.6666666666666665,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -480,8 +480,29 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 23,
-    "score_delta": -43.8,
-    "rank_delta": -10
+    "score_delta": 72.5,
+    "rank_delta": 12
+  },
+  {
+    "id": "phoenix-1",
+    "name": "茅森早香",
+    "teamId": "phoenix",
+    "score": -18.9,
+    "games": 3,
+    "avg": 2.67,
+    "regular_score": -18.9,
+    "regular_games": 3,
+    "regular_avg": 2.6666666666666665,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 24,
+    "score_delta": -59.2,
+    "rank_delta": -14
   },
   {
     "id": "drivens-1",
@@ -500,30 +521,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 24,
-    "score_delta": 0,
-    "rank_delta": 1
-  },
-  {
-    "id": "sakura-1",
-    "name": "岡田紗佳",
-    "teamId": "sakura",
-    "score": -21,
-    "games": 2,
-    "avg": 2.5,
-    "regular_score": -21,
-    "regular_games": 2,
-    "regular_avg": 2.5,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
     "rank": 25,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": -1
   },
   {
     "id": "phoenix-3",
@@ -544,18 +544,18 @@ window.MLEAGUE_PLAYERS = [
     "avgApproximate": false,
     "rank": 26,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
-    "id": "abemas-2",
-    "name": "白鳥翔",
-    "teamId": "abemas",
-    "score": -25.3,
-    "games": 2,
-    "avg": 2.5,
-    "regular_score": -25.3,
-    "regular_games": 2,
-    "regular_avg": 2.5,
+    "id": "pirates-3",
+    "name": "仲林圭",
+    "teamId": "pirates",
+    "score": -29.5,
+    "games": 5,
+    "avg": 2.4,
+    "regular_score": -29.5,
+    "regular_games": 5,
+    "regular_avg": 2.4,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -564,17 +564,17 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 27,
-    "score_delta": 0,
-    "rank_delta": 1
+    "score_delta": -22.3,
+    "rank_delta": -8
   },
   {
-    "id": "jets-1",
-    "name": "石井一馬",
-    "teamId": "jets",
-    "score": -28.2,
+    "id": "sakura-3",
+    "name": "阿久津翔太",
+    "teamId": "sakura",
+    "score": -36.4,
     "games": 3,
     "avg": 2.67,
-    "regular_score": -28.2,
+    "regular_score": -36.4,
     "regular_games": 3,
     "regular_avg": 2.6666666666666665,
     "semi_score": 0,
@@ -585,18 +585,18 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 28,
-    "score_delta": -23.4,
-    "rank_delta": -7
+    "score_delta": 3.6,
+    "rank_delta": 1
   },
   {
-    "id": "sakura-3",
-    "name": "阿久津翔太",
-    "teamId": "sakura",
-    "score": -40,
-    "games": 2,
+    "id": "beast-2",
+    "name": "中田花奈",
+    "teamId": "beast",
+    "score": -38.6,
+    "games": 4,
     "avg": 3,
-    "regular_score": -40,
-    "regular_games": 2,
+    "regular_score": -38.6,
+    "regular_games": 4,
     "regular_avg": 3,
     "semi_score": 0,
     "semi_games": 0,
@@ -606,29 +606,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 29,
-    "score_delta": 0,
-    "rank_delta": 0
-  },
-  {
-    "id": "konami-4",
-    "name": "滝沢和典",
-    "teamId": "konami",
-    "score": -44.1,
-    "games": 2,
-    "avg": 3,
-    "regular_score": -44.1,
-    "regular_games": 2,
-    "regular_avg": 3,
-    "semi_score": 0,
-    "semi_games": 0,
-    "semi_avg": null,
-    "final_score": 0,
-    "final_games": 0,
-    "final_avg": null,
-    "avgApproximate": false,
-    "rank": 30,
-    "score_delta": 0,
-    "rank_delta": 0
+    "score_delta": -21.2,
+    "rank_delta": -6
   },
   {
     "id": "beast-1",
@@ -647,9 +626,9 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 31,
+    "rank": 30,
     "score_delta": 0,
-    "rank_delta": 0
+    "rank_delta": 1
   },
   {
     "id": "phoenix-2",
@@ -668,20 +647,41 @@ window.MLEAGUE_PLAYERS = [
     "final_games": 0,
     "final_avg": null,
     "avgApproximate": false,
-    "rank": 32,
+    "rank": 31,
     "score_delta": 0,
     "rank_delta": 1
+  },
+  {
+    "id": "abemas-2",
+    "name": "白鳥翔",
+    "teamId": "abemas",
+    "score": -64.9,
+    "games": 3,
+    "avg": 3,
+    "regular_score": -64.9,
+    "regular_games": 3,
+    "regular_avg": 3,
+    "semi_score": 0,
+    "semi_games": 0,
+    "semi_avg": null,
+    "final_score": 0,
+    "final_games": 0,
+    "final_avg": null,
+    "avgApproximate": false,
+    "rank": 32,
+    "score_delta": -39.6,
+    "rank_delta": -5
   },
   {
     "id": "jets-2",
     "name": "三浦智博",
     "teamId": "jets",
-    "score": -48.1,
-    "games": 1,
-    "avg": 4,
-    "regular_score": -48.1,
-    "regular_games": 1,
-    "regular_avg": 4,
+    "score": -66.5,
+    "games": 2,
+    "avg": 3.5,
+    "regular_score": -66.5,
+    "regular_games": 2,
+    "regular_avg": 3.5,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -690,8 +690,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 33,
-    "score_delta": 0,
-    "rank_delta": 1
+    "score_delta": -18.4,
+    "rank_delta": 0
   },
   {
     "id": "jets-4",
@@ -712,18 +712,18 @@ window.MLEAGUE_PLAYERS = [
     "avgApproximate": false,
     "rank": 34,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
-    "id": "phoenix-4",
-    "name": "佐野ひなこ",
-    "teamId": "phoenix",
-    "score": -90.7,
-    "games": 2,
-    "avg": 3.5,
-    "regular_score": -90.7,
-    "regular_games": 2,
-    "regular_avg": 3.5,
+    "id": "jets-1",
+    "name": "石井一馬",
+    "teamId": "jets",
+    "score": -82,
+    "games": 4,
+    "avg": 3,
+    "regular_score": -82,
+    "regular_games": 4,
+    "regular_avg": 3,
     "semi_score": 0,
     "semi_games": 0,
     "semi_avg": null,
@@ -732,8 +732,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 35,
-    "score_delta": 0,
-    "rank_delta": 2
+    "score_delta": -53.8,
+    "rank_delta": -7
   },
   {
     "id": "abemas-4",
@@ -753,8 +753,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 36,
-    "score_delta": -47.1,
-    "rank_delta": -4
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "id": "konami-3",
@@ -775,7 +775,7 @@ window.MLEAGUE_PLAYERS = [
     "avgApproximate": false,
     "rank": 37,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "id": "drivens-2",
@@ -795,8 +795,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 38,
-    "score_delta": -40.6,
-    "rank_delta": -2
+    "score_delta": 0,
+    "rank_delta": 0
   },
   {
     "id": "furinkazan-3",
@@ -817,7 +817,7 @@ window.MLEAGUE_PLAYERS = [
     "avgApproximate": false,
     "rank": 39,
     "score_delta": 0,
-    "rank_delta": 1
+    "rank_delta": 0
   },
   {
     "id": "raiden-1",
@@ -837,8 +837,8 @@ window.MLEAGUE_PLAYERS = [
     "final_avg": null,
     "avgApproximate": false,
     "rank": 40,
-    "score_delta": -25.1,
-    "rank_delta": -1
+    "score_delta": 0,
+    "rank_delta": 0
   }
 ];
-window.MLEAGUE_UPDATED = "2026-09-25";
+window.MLEAGUE_UPDATED = "2026-09-28";
