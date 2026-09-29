@@ -3,7 +3,7 @@
   "id": "2026-27",
   "status": "active",
   "activeStage": "regular",
-  "updatedAt": "2026-09-28T22:29:09.568Z",
+  "updatedAt": "2026-09-29T21:19:42.942Z",
   "resultDate": "2026-09-28",
   "dateKind": "result",
   "roster": [
@@ -441,14 +441,14 @@
         },
         {
           "name": "鈴木優",
-          "score": 5.6,
-          "games": 2,
-          "avg": 2,
+          "score": -39.5,
+          "games": 3,
+          "avg": 2.6666666666666665,
           "placements": [
             0,
             2,
             0,
-            0
+            1
           ]
         },
         {
@@ -465,14 +465,14 @@
         },
         {
           "name": "朝倉康心",
-          "score": 128.7,
-          "games": 2,
-          "avg": 1,
+          "score": 81,
+          "games": 3,
+          "avg": 2,
           "placements": [
             2,
             0,
             0,
-            0
+            1
           ]
         },
         {
@@ -501,35 +501,35 @@
         },
         {
           "name": "松本吉弘",
-          "score": 138.8,
-          "games": 3,
-          "avg": 1.3333333333333333,
+          "score": 71.9,
+          "games": 4,
+          "avg": 2,
           "placements": [
             2,
             1,
             0,
-            0
+            1
           ]
         },
         {
           "name": "日向藍子",
-          "score": -93.6,
-          "games": 3,
-          "avg": 3.3333333333333335,
+          "score": -120.4,
+          "games": 4,
+          "avg": 3.25,
           "placements": [
             0,
             0,
-            2,
+            3,
             1
           ]
         },
         {
           "name": "園田賢",
-          "score": -20.9,
-          "games": 3,
-          "avg": 2.6666666666666665,
+          "score": 57.4,
+          "games": 4,
+          "avg": 2.25,
           "placements": [
-            0,
+            1,
             1,
             2,
             0
@@ -561,11 +561,11 @@
         },
         {
           "name": "渡辺太",
-          "score": 11.7,
-          "games": 2,
-          "avg": 2.5,
+          "score": 73.7,
+          "games": 3,
+          "avg": 2,
           "placements": [
-            1,
+            2,
             0,
             0,
             1
@@ -597,13 +597,13 @@
         },
         {
           "name": "竹内元太",
-          "score": -21.9,
-          "games": 2,
+          "score": -37.8,
+          "games": 4,
           "avg": 2.5,
           "placements": [
             0,
-            1,
-            1,
+            2,
+            2,
             0
           ]
         },
@@ -621,23 +621,23 @@
         },
         {
           "name": "鈴木大介",
-          "score": -44.6,
-          "games": 3,
+          "score": -58.9,
+          "games": 4,
           "avg": 3,
           "placements": [
             0,
             1,
-            1,
+            2,
             1
           ]
         },
         {
           "name": "中田花奈",
-          "score": -38.6,
-          "games": 4,
-          "avg": 3,
+          "score": 28.4,
+          "games": 5,
+          "avg": 2.6,
           "placements": [
-            1,
+            2,
             0,
             1,
             2
@@ -693,24 +693,24 @@
         },
         {
           "name": "黒沢咲",
-          "score": 6.3,
-          "games": 2,
-          "avg": 2.5,
+          "score": 10.5,
+          "games": 3,
+          "avg": 2.3333333333333335,
           "placements": [
             1,
-            0,
+            1,
             0,
             1
           ]
         },
         {
           "name": "本田朋広",
-          "score": 20,
-          "games": 3,
-          "avg": 2.3333333333333335,
+          "score": 26.8,
+          "games": 4,
+          "avg": 2.25,
           "placements": [
             1,
-            0,
+            1,
             2,
             0
           ]
@@ -729,26 +729,26 @@
         },
         {
           "name": "高宮まり",
-          "score": 55.9,
-          "games": 1,
-          "avg": 1,
+          "score": 75,
+          "games": 2,
+          "avg": 1.5,
           "placements": [
             1,
-            0,
+            1,
             0,
             0
           ]
         },
         {
           "name": "伊達朱里紗",
-          "score": -102.6,
-          "games": 2,
+          "score": -152.4,
+          "games": 3,
           "avg": 4,
           "placements": [
             0,
             0,
             0,
-            2
+            3
           ]
         },
         {
@@ -765,13 +765,13 @@
         },
         {
           "name": "二階堂亜樹",
-          "score": 43.5,
-          "games": 3,
-          "avg": 2,
+          "score": 20,
+          "games": 4,
+          "avg": 2.25,
           "placements": [
             1,
             1,
-            1,
+            2,
             0
           ]
         },
@@ -789,11 +789,11 @@
         },
         {
           "name": "永井孝典",
-          "score": -127.7,
-          "games": 2,
-          "avg": 4,
+          "score": -75.1,
+          "games": 3,
+          "avg": 3,
           "placements": [
-            0,
+            1,
             0,
             0,
             2
@@ -823,7 +823,7 @@
         }
       ],
       "resultDate": "2026-09-28",
-      "observedAt": "2026-09-28T22:29:09.568Z",
+      "observedAt": "2026-09-29T21:19:42.942Z",
       "status": "started"
     },
     "semi": null,
@@ -850,25 +850,6 @@
       "rank": 1
     },
     {
-      "id": "abemas-3",
-      "name": "松本吉弘",
-      "teamId": "abemas",
-      "score": 138.8,
-      "games": 3,
-      "avg": 1.33,
-      "regular_score": 138.8,
-      "regular_games": 3,
-      "regular_avg": 1.3333333333333333,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 2
-    },
-    {
       "id": "sakura-4",
       "name": "尻無濱航",
       "teamId": "sakura",
@@ -885,26 +866,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 3
-    },
-    {
-      "id": "pirates-4",
-      "name": "朝倉康心",
-      "teamId": "pirates",
-      "score": 128.7,
-      "games": 2,
-      "avg": 1,
-      "regular_score": 128.7,
-      "regular_games": 2,
-      "regular_avg": 1,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 4
+      "rank": 2
     },
     {
       "id": "raiden-2",
@@ -923,7 +885,26 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 5
+      "rank": 3
+    },
+    {
+      "id": "pirates-4",
+      "name": "朝倉康心",
+      "teamId": "pirates",
+      "score": 81,
+      "games": 3,
+      "avg": 2,
+      "regular_score": 81,
+      "regular_games": 3,
+      "regular_avg": 2,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 4
     },
     {
       "id": "konami-1",
@@ -942,7 +923,64 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
+      "rank": 5
+    },
+    {
+      "id": "konami-2",
+      "name": "高宮まり",
+      "teamId": "konami",
+      "score": 75,
+      "games": 2,
+      "avg": 1.5,
+      "regular_score": 75,
+      "regular_games": 2,
+      "regular_avg": 1.5,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
       "rank": 6
+    },
+    {
+      "id": "drivens-4",
+      "name": "渡辺太",
+      "teamId": "drivens",
+      "score": 73.7,
+      "games": 3,
+      "avg": 2,
+      "regular_score": 73.7,
+      "regular_games": 3,
+      "regular_avg": 2,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 7
+    },
+    {
+      "id": "abemas-3",
+      "name": "松本吉弘",
+      "teamId": "abemas",
+      "score": 71.9,
+      "games": 4,
+      "avg": 2,
+      "regular_score": 71.9,
+      "regular_games": 4,
+      "regular_avg": 2,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 8
     },
     {
       "id": "beast-4",
@@ -961,7 +999,26 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 7
+      "rank": 9
+    },
+    {
+      "id": "drivens-1",
+      "name": "園田賢",
+      "teamId": "drivens",
+      "score": 57.4,
+      "games": 4,
+      "avg": 2.25,
+      "regular_score": 57.4,
+      "regular_games": 4,
+      "regular_avg": 2.25,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 10
     },
     {
       "id": "sakura-2",
@@ -980,45 +1037,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 8
-    },
-    {
-      "id": "konami-2",
-      "name": "高宮まり",
-      "teamId": "konami",
-      "score": 55.9,
-      "games": 1,
-      "avg": 1,
-      "regular_score": 55.9,
-      "regular_games": 1,
-      "regular_avg": 1,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 9
-    },
-    {
-      "id": "furinkazan-1",
-      "name": "二階堂亜樹",
-      "teamId": "furinkazan",
-      "score": 43.5,
-      "games": 3,
-      "avg": 2,
-      "regular_score": 43.5,
-      "regular_games": 3,
-      "regular_avg": 2,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 10
+      "rank": 11
     },
     {
       "id": "sakura-1",
@@ -1037,7 +1056,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 11
+      "rank": 12
     },
     {
       "id": "furinkazan-2",
@@ -1056,7 +1075,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 12
+      "rank": 13
     },
     {
       "id": "jets-3",
@@ -1075,18 +1094,18 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 13
+      "rank": 14
     },
     {
-      "id": "raiden-4",
-      "name": "本田朋広",
-      "teamId": "raiden",
-      "score": 20,
-      "games": 3,
-      "avg": 2.33,
-      "regular_score": 20,
-      "regular_games": 3,
-      "regular_avg": 2.3333333333333335,
+      "id": "beast-2",
+      "name": "中田花奈",
+      "teamId": "beast",
+      "score": 28.4,
+      "games": 5,
+      "avg": 2.6,
+      "regular_score": 28.4,
+      "regular_games": 5,
+      "regular_avg": 2.6,
       "semi_score": 0,
       "semi_games": 0,
       "semi_avg": null,
@@ -1094,7 +1113,45 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 14
+      "rank": 15
+    },
+    {
+      "id": "raiden-4",
+      "name": "本田朋広",
+      "teamId": "raiden",
+      "score": 26.8,
+      "games": 4,
+      "avg": 2.25,
+      "regular_score": 26.8,
+      "regular_games": 4,
+      "regular_avg": 2.25,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 16
+    },
+    {
+      "id": "furinkazan-1",
+      "name": "二階堂亜樹",
+      "teamId": "furinkazan",
+      "score": 20,
+      "games": 4,
+      "avg": 2.25,
+      "regular_score": 20,
+      "regular_games": 4,
+      "regular_avg": 2.25,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 17
     },
     {
       "id": "beast-3",
@@ -1113,18 +1170,18 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 15
+      "rank": 18
     },
     {
-      "id": "drivens-4",
-      "name": "渡辺太",
-      "teamId": "drivens",
-      "score": 11.7,
-      "games": 2,
-      "avg": 2.5,
-      "regular_score": 11.7,
-      "regular_games": 2,
-      "regular_avg": 2.5,
+      "id": "raiden-3",
+      "name": "黒沢咲",
+      "teamId": "raiden",
+      "score": 10.5,
+      "games": 3,
+      "avg": 2.33,
+      "regular_score": 10.5,
+      "regular_games": 3,
+      "regular_avg": 2.3333333333333335,
       "semi_score": 0,
       "semi_games": 0,
       "semi_avg": null,
@@ -1132,7 +1189,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 16
+      "rank": 19
     },
     {
       "id": "konami-4",
@@ -1151,26 +1208,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 17
-    },
-    {
-      "id": "raiden-3",
-      "name": "黒沢咲",
-      "teamId": "raiden",
-      "score": 6.3,
-      "games": 2,
-      "avg": 2.5,
-      "regular_score": 6.3,
-      "regular_games": 2,
-      "regular_avg": 2.5,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 18
+      "rank": 20
     },
     {
       "id": "pirates-1",
@@ -1189,26 +1227,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 19
-    },
-    {
-      "id": "pirates-2",
-      "name": "鈴木優",
-      "teamId": "pirates",
-      "score": 5.6,
-      "games": 2,
-      "avg": 2,
-      "regular_score": 5.6,
-      "regular_games": 2,
-      "regular_avg": 2,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 20
+      "rank": 21
     },
     {
       "id": "furinkazan-4",
@@ -1227,7 +1246,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 21
+      "rank": 22
     },
     {
       "id": "drivens-3",
@@ -1246,7 +1265,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 22
+      "rank": 23
     },
     {
       "id": "phoenix-4",
@@ -1265,7 +1284,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 23
+      "rank": 24
     },
     {
       "id": "phoenix-1",
@@ -1284,45 +1303,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 24
-    },
-    {
-      "id": "drivens-1",
-      "name": "園田賢",
-      "teamId": "drivens",
-      "score": -20.9,
-      "games": 3,
-      "avg": 2.67,
-      "regular_score": -20.9,
-      "regular_games": 3,
-      "regular_avg": 2.6666666666666665,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
       "rank": 25
-    },
-    {
-      "id": "phoenix-3",
-      "name": "竹内元太",
-      "teamId": "phoenix",
-      "score": -21.9,
-      "games": 2,
-      "avg": 2.5,
-      "regular_score": -21.9,
-      "regular_games": 2,
-      "regular_avg": 2.5,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 26
     },
     {
       "id": "pirates-3",
@@ -1341,7 +1322,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 27
+      "rank": 26
     },
     {
       "id": "sakura-3",
@@ -1360,18 +1341,37 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
+      "rank": 27
+    },
+    {
+      "id": "phoenix-3",
+      "name": "竹内元太",
+      "teamId": "phoenix",
+      "score": -37.8,
+      "games": 4,
+      "avg": 2.5,
+      "regular_score": -37.8,
+      "regular_games": 4,
+      "regular_avg": 2.5,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
       "rank": 28
     },
     {
-      "id": "beast-2",
-      "name": "中田花奈",
-      "teamId": "beast",
-      "score": -38.6,
-      "games": 4,
-      "avg": 3,
-      "regular_score": -38.6,
-      "regular_games": 4,
-      "regular_avg": 3,
+      "id": "pirates-2",
+      "name": "鈴木優",
+      "teamId": "pirates",
+      "score": -39.5,
+      "games": 3,
+      "avg": 2.67,
+      "regular_score": -39.5,
+      "regular_games": 3,
+      "regular_avg": 2.6666666666666665,
       "semi_score": 0,
       "semi_games": 0,
       "semi_avg": null,
@@ -1382,14 +1382,14 @@
       "rank": 29
     },
     {
-      "id": "beast-1",
-      "name": "鈴木大介",
-      "teamId": "beast",
-      "score": -44.6,
-      "games": 3,
+      "id": "phoenix-2",
+      "name": "醍醐大",
+      "teamId": "phoenix",
+      "score": -47.9,
+      "games": 2,
       "avg": 3,
-      "regular_score": -44.6,
-      "regular_games": 3,
+      "regular_score": -47.9,
+      "regular_games": 2,
       "regular_avg": 3,
       "semi_score": 0,
       "semi_games": 0,
@@ -1401,14 +1401,14 @@
       "rank": 30
     },
     {
-      "id": "phoenix-2",
-      "name": "醍醐大",
-      "teamId": "phoenix",
-      "score": -47.9,
-      "games": 2,
+      "id": "beast-1",
+      "name": "鈴木大介",
+      "teamId": "beast",
+      "score": -58.9,
+      "games": 4,
       "avg": 3,
-      "regular_score": -47.9,
-      "regular_games": 2,
+      "regular_score": -58.9,
+      "regular_games": 4,
       "regular_avg": 3,
       "semi_score": 0,
       "semi_games": 0,
@@ -1477,6 +1477,25 @@
       "rank": 34
     },
     {
+      "id": "furinkazan-3",
+      "name": "永井孝典",
+      "teamId": "furinkazan",
+      "score": -75.1,
+      "games": 3,
+      "avg": 3,
+      "regular_score": -75.1,
+      "regular_games": 3,
+      "regular_avg": 3,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 35
+    },
+    {
       "id": "jets-1",
       "name": "石井一馬",
       "teamId": "jets",
@@ -1493,45 +1512,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 35
-    },
-    {
-      "id": "abemas-4",
-      "name": "日向藍子",
-      "teamId": "abemas",
-      "score": -93.6,
-      "games": 3,
-      "avg": 3.33,
-      "regular_score": -93.6,
-      "regular_games": 3,
-      "regular_avg": 3.3333333333333335,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
       "rank": 36
-    },
-    {
-      "id": "konami-3",
-      "name": "伊達朱里紗",
-      "teamId": "konami",
-      "score": -102.6,
-      "games": 2,
-      "avg": 4,
-      "regular_score": -102.6,
-      "regular_games": 2,
-      "regular_avg": 4,
-      "semi_score": 0,
-      "semi_games": 0,
-      "semi_avg": null,
-      "final_score": 0,
-      "final_games": 0,
-      "final_avg": null,
-      "avgApproximate": false,
-      "rank": 37
     },
     {
       "id": "drivens-2",
@@ -1550,18 +1531,18 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 38
+      "rank": 37
     },
     {
-      "id": "furinkazan-3",
-      "name": "永井孝典",
-      "teamId": "furinkazan",
-      "score": -127.7,
-      "games": 2,
-      "avg": 4,
-      "regular_score": -127.7,
-      "regular_games": 2,
-      "regular_avg": 4,
+      "id": "abemas-4",
+      "name": "日向藍子",
+      "teamId": "abemas",
+      "score": -120.4,
+      "games": 4,
+      "avg": 3.25,
+      "regular_score": -120.4,
+      "regular_games": 4,
+      "regular_avg": 3.25,
       "semi_score": 0,
       "semi_games": 0,
       "semi_avg": null,
@@ -1569,7 +1550,7 @@
       "final_games": 0,
       "final_avg": null,
       "avgApproximate": false,
-      "rank": 39
+      "rank": 38
     },
     {
       "id": "raiden-1",
@@ -1581,6 +1562,25 @@
       "regular_score": -134,
       "regular_games": 3,
       "regular_avg": 3.6666666666666665,
+      "semi_score": 0,
+      "semi_games": 0,
+      "semi_avg": null,
+      "final_score": 0,
+      "final_games": 0,
+      "final_avg": null,
+      "avgApproximate": false,
+      "rank": 39
+    },
+    {
+      "id": "konami-3",
+      "name": "伊達朱里紗",
+      "teamId": "konami",
+      "score": -152.4,
+      "games": 3,
+      "avg": 4,
+      "regular_score": -152.4,
+      "regular_games": 3,
+      "regular_avg": 4,
       "semi_score": 0,
       "semi_games": 0,
       "semi_avg": null,
@@ -8803,7 +8803,7 @@
     },
     {
       "date": "2026-09-28",
-      "observedAt": "2026-09-28T22:29:09.568Z",
+      "observedAt": "2026-09-29T21:19:42.942Z",
       "players": [
         {
           "id": "abemas-1",
@@ -8825,25 +8825,6 @@
           "rank": 1
         },
         {
-          "id": "abemas-3",
-          "name": "松本吉弘",
-          "teamId": "abemas",
-          "score": 138.8,
-          "games": 3,
-          "avg": 1.33,
-          "regular_score": 138.8,
-          "regular_games": 3,
-          "regular_avg": 1.3333333333333333,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 2
-        },
-        {
           "id": "sakura-4",
           "name": "尻無濱航",
           "teamId": "sakura",
@@ -8860,26 +8841,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 3
-        },
-        {
-          "id": "pirates-4",
-          "name": "朝倉康心",
-          "teamId": "pirates",
-          "score": 128.7,
-          "games": 2,
-          "avg": 1,
-          "regular_score": 128.7,
-          "regular_games": 2,
-          "regular_avg": 1,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 4
+          "rank": 2
         },
         {
           "id": "raiden-2",
@@ -8898,7 +8860,26 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 5
+          "rank": 3
+        },
+        {
+          "id": "pirates-4",
+          "name": "朝倉康心",
+          "teamId": "pirates",
+          "score": 81,
+          "games": 3,
+          "avg": 2,
+          "regular_score": 81,
+          "regular_games": 3,
+          "regular_avg": 2,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 4
         },
         {
           "id": "konami-1",
@@ -8917,7 +8898,64 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
+          "rank": 5
+        },
+        {
+          "id": "konami-2",
+          "name": "高宮まり",
+          "teamId": "konami",
+          "score": 75,
+          "games": 2,
+          "avg": 1.5,
+          "regular_score": 75,
+          "regular_games": 2,
+          "regular_avg": 1.5,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
           "rank": 6
+        },
+        {
+          "id": "drivens-4",
+          "name": "渡辺太",
+          "teamId": "drivens",
+          "score": 73.7,
+          "games": 3,
+          "avg": 2,
+          "regular_score": 73.7,
+          "regular_games": 3,
+          "regular_avg": 2,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 7
+        },
+        {
+          "id": "abemas-3",
+          "name": "松本吉弘",
+          "teamId": "abemas",
+          "score": 71.9,
+          "games": 4,
+          "avg": 2,
+          "regular_score": 71.9,
+          "regular_games": 4,
+          "regular_avg": 2,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 8
         },
         {
           "id": "beast-4",
@@ -8936,7 +8974,26 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 7
+          "rank": 9
+        },
+        {
+          "id": "drivens-1",
+          "name": "園田賢",
+          "teamId": "drivens",
+          "score": 57.4,
+          "games": 4,
+          "avg": 2.25,
+          "regular_score": 57.4,
+          "regular_games": 4,
+          "regular_avg": 2.25,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 10
         },
         {
           "id": "sakura-2",
@@ -8955,45 +9012,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 8
-        },
-        {
-          "id": "konami-2",
-          "name": "高宮まり",
-          "teamId": "konami",
-          "score": 55.9,
-          "games": 1,
-          "avg": 1,
-          "regular_score": 55.9,
-          "regular_games": 1,
-          "regular_avg": 1,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 9
-        },
-        {
-          "id": "furinkazan-1",
-          "name": "二階堂亜樹",
-          "teamId": "furinkazan",
-          "score": 43.5,
-          "games": 3,
-          "avg": 2,
-          "regular_score": 43.5,
-          "regular_games": 3,
-          "regular_avg": 2,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 10
+          "rank": 11
         },
         {
           "id": "sakura-1",
@@ -9012,7 +9031,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 11
+          "rank": 12
         },
         {
           "id": "furinkazan-2",
@@ -9031,7 +9050,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 12
+          "rank": 13
         },
         {
           "id": "jets-3",
@@ -9050,18 +9069,18 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 13
+          "rank": 14
         },
         {
-          "id": "raiden-4",
-          "name": "本田朋広",
-          "teamId": "raiden",
-          "score": 20,
-          "games": 3,
-          "avg": 2.33,
-          "regular_score": 20,
-          "regular_games": 3,
-          "regular_avg": 2.3333333333333335,
+          "id": "beast-2",
+          "name": "中田花奈",
+          "teamId": "beast",
+          "score": 28.4,
+          "games": 5,
+          "avg": 2.6,
+          "regular_score": 28.4,
+          "regular_games": 5,
+          "regular_avg": 2.6,
           "semi_score": 0,
           "semi_games": 0,
           "semi_avg": null,
@@ -9069,7 +9088,45 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 14
+          "rank": 15
+        },
+        {
+          "id": "raiden-4",
+          "name": "本田朋広",
+          "teamId": "raiden",
+          "score": 26.8,
+          "games": 4,
+          "avg": 2.25,
+          "regular_score": 26.8,
+          "regular_games": 4,
+          "regular_avg": 2.25,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 16
+        },
+        {
+          "id": "furinkazan-1",
+          "name": "二階堂亜樹",
+          "teamId": "furinkazan",
+          "score": 20,
+          "games": 4,
+          "avg": 2.25,
+          "regular_score": 20,
+          "regular_games": 4,
+          "regular_avg": 2.25,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 17
         },
         {
           "id": "beast-3",
@@ -9088,18 +9145,18 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 15
+          "rank": 18
         },
         {
-          "id": "drivens-4",
-          "name": "渡辺太",
-          "teamId": "drivens",
-          "score": 11.7,
-          "games": 2,
-          "avg": 2.5,
-          "regular_score": 11.7,
-          "regular_games": 2,
-          "regular_avg": 2.5,
+          "id": "raiden-3",
+          "name": "黒沢咲",
+          "teamId": "raiden",
+          "score": 10.5,
+          "games": 3,
+          "avg": 2.33,
+          "regular_score": 10.5,
+          "regular_games": 3,
+          "regular_avg": 2.3333333333333335,
           "semi_score": 0,
           "semi_games": 0,
           "semi_avg": null,
@@ -9107,7 +9164,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 16
+          "rank": 19
         },
         {
           "id": "konami-4",
@@ -9126,26 +9183,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 17
-        },
-        {
-          "id": "raiden-3",
-          "name": "黒沢咲",
-          "teamId": "raiden",
-          "score": 6.3,
-          "games": 2,
-          "avg": 2.5,
-          "regular_score": 6.3,
-          "regular_games": 2,
-          "regular_avg": 2.5,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 18
+          "rank": 20
         },
         {
           "id": "pirates-1",
@@ -9164,26 +9202,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 19
-        },
-        {
-          "id": "pirates-2",
-          "name": "鈴木優",
-          "teamId": "pirates",
-          "score": 5.6,
-          "games": 2,
-          "avg": 2,
-          "regular_score": 5.6,
-          "regular_games": 2,
-          "regular_avg": 2,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 20
+          "rank": 21
         },
         {
           "id": "furinkazan-4",
@@ -9202,7 +9221,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 21
+          "rank": 22
         },
         {
           "id": "drivens-3",
@@ -9221,7 +9240,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 22
+          "rank": 23
         },
         {
           "id": "phoenix-4",
@@ -9240,7 +9259,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 23
+          "rank": 24
         },
         {
           "id": "phoenix-1",
@@ -9259,45 +9278,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 24
-        },
-        {
-          "id": "drivens-1",
-          "name": "園田賢",
-          "teamId": "drivens",
-          "score": -20.9,
-          "games": 3,
-          "avg": 2.67,
-          "regular_score": -20.9,
-          "regular_games": 3,
-          "regular_avg": 2.6666666666666665,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
           "rank": 25
-        },
-        {
-          "id": "phoenix-3",
-          "name": "竹内元太",
-          "teamId": "phoenix",
-          "score": -21.9,
-          "games": 2,
-          "avg": 2.5,
-          "regular_score": -21.9,
-          "regular_games": 2,
-          "regular_avg": 2.5,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 26
         },
         {
           "id": "pirates-3",
@@ -9316,7 +9297,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 27
+          "rank": 26
         },
         {
           "id": "sakura-3",
@@ -9335,18 +9316,37 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
+          "rank": 27
+        },
+        {
+          "id": "phoenix-3",
+          "name": "竹内元太",
+          "teamId": "phoenix",
+          "score": -37.8,
+          "games": 4,
+          "avg": 2.5,
+          "regular_score": -37.8,
+          "regular_games": 4,
+          "regular_avg": 2.5,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
           "rank": 28
         },
         {
-          "id": "beast-2",
-          "name": "中田花奈",
-          "teamId": "beast",
-          "score": -38.6,
-          "games": 4,
-          "avg": 3,
-          "regular_score": -38.6,
-          "regular_games": 4,
-          "regular_avg": 3,
+          "id": "pirates-2",
+          "name": "鈴木優",
+          "teamId": "pirates",
+          "score": -39.5,
+          "games": 3,
+          "avg": 2.67,
+          "regular_score": -39.5,
+          "regular_games": 3,
+          "regular_avg": 2.6666666666666665,
           "semi_score": 0,
           "semi_games": 0,
           "semi_avg": null,
@@ -9357,14 +9357,14 @@
           "rank": 29
         },
         {
-          "id": "beast-1",
-          "name": "鈴木大介",
-          "teamId": "beast",
-          "score": -44.6,
-          "games": 3,
+          "id": "phoenix-2",
+          "name": "醍醐大",
+          "teamId": "phoenix",
+          "score": -47.9,
+          "games": 2,
           "avg": 3,
-          "regular_score": -44.6,
-          "regular_games": 3,
+          "regular_score": -47.9,
+          "regular_games": 2,
           "regular_avg": 3,
           "semi_score": 0,
           "semi_games": 0,
@@ -9376,14 +9376,14 @@
           "rank": 30
         },
         {
-          "id": "phoenix-2",
-          "name": "醍醐大",
-          "teamId": "phoenix",
-          "score": -47.9,
-          "games": 2,
+          "id": "beast-1",
+          "name": "鈴木大介",
+          "teamId": "beast",
+          "score": -58.9,
+          "games": 4,
           "avg": 3,
-          "regular_score": -47.9,
-          "regular_games": 2,
+          "regular_score": -58.9,
+          "regular_games": 4,
           "regular_avg": 3,
           "semi_score": 0,
           "semi_games": 0,
@@ -9452,6 +9452,25 @@
           "rank": 34
         },
         {
+          "id": "furinkazan-3",
+          "name": "永井孝典",
+          "teamId": "furinkazan",
+          "score": -75.1,
+          "games": 3,
+          "avg": 3,
+          "regular_score": -75.1,
+          "regular_games": 3,
+          "regular_avg": 3,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
+          "rank": 35
+        },
+        {
           "id": "jets-1",
           "name": "石井一馬",
           "teamId": "jets",
@@ -9468,45 +9487,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 35
-        },
-        {
-          "id": "abemas-4",
-          "name": "日向藍子",
-          "teamId": "abemas",
-          "score": -93.6,
-          "games": 3,
-          "avg": 3.33,
-          "regular_score": -93.6,
-          "regular_games": 3,
-          "regular_avg": 3.3333333333333335,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
           "rank": 36
-        },
-        {
-          "id": "konami-3",
-          "name": "伊達朱里紗",
-          "teamId": "konami",
-          "score": -102.6,
-          "games": 2,
-          "avg": 4,
-          "regular_score": -102.6,
-          "regular_games": 2,
-          "regular_avg": 4,
-          "semi_score": 0,
-          "semi_games": 0,
-          "semi_avg": null,
-          "final_score": 0,
-          "final_games": 0,
-          "final_avg": null,
-          "avgApproximate": false,
-          "rank": 37
         },
         {
           "id": "drivens-2",
@@ -9525,18 +9506,18 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 38
+          "rank": 37
         },
         {
-          "id": "furinkazan-3",
-          "name": "永井孝典",
-          "teamId": "furinkazan",
-          "score": -127.7,
-          "games": 2,
-          "avg": 4,
-          "regular_score": -127.7,
-          "regular_games": 2,
-          "regular_avg": 4,
+          "id": "abemas-4",
+          "name": "日向藍子",
+          "teamId": "abemas",
+          "score": -120.4,
+          "games": 4,
+          "avg": 3.25,
+          "regular_score": -120.4,
+          "regular_games": 4,
+          "regular_avg": 3.25,
           "semi_score": 0,
           "semi_games": 0,
           "semi_avg": null,
@@ -9544,7 +9525,7 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
-          "rank": 39
+          "rank": 38
         },
         {
           "id": "raiden-1",
@@ -9563,17 +9544,36 @@
           "final_games": 0,
           "final_avg": null,
           "avgApproximate": false,
+          "rank": 39
+        },
+        {
+          "id": "konami-3",
+          "name": "伊達朱里紗",
+          "teamId": "konami",
+          "score": -152.4,
+          "games": 3,
+          "avg": 4,
+          "regular_score": -152.4,
+          "regular_games": 3,
+          "regular_avg": 4,
+          "semi_score": 0,
+          "semi_games": 0,
+          "semi_avg": null,
+          "final_score": 0,
+          "final_games": 0,
+          "final_avg": null,
+          "avgApproximate": false,
           "rank": 40
         }
       ],
       "stages": {
         "regular": {
-          "ten_pt": 375.4,
-          "ten_bk": 773.2,
-          "aji_pt": -81.7,
-          "aji_bk": -598.1,
-          "sat_pt": 59.3,
-          "sat_bk": -175.1
+          "ten_pt": 289.4,
+          "ten_bk": 631.3,
+          "aji_pt": -92.6,
+          "aji_bk": -514.7,
+          "sat_pt": 40.1,
+          "sat_bk": -116.6
         },
         "semi": {
           "ten_pt": 0,
@@ -9592,12 +9592,12 @@
           "sat_bk": 0
         }
       },
-      "ten_pt": 375.4,
-      "ten_bk": 773.2,
-      "aji_pt": -81.7,
-      "aji_bk": -598.1,
-      "sat_pt": 59.3,
-      "sat_bk": -175.1,
+      "ten_pt": 289.4,
+      "ten_bk": 631.3,
+      "aji_pt": -92.6,
+      "aji_bk": -514.7,
+      "sat_pt": 40.1,
+      "sat_bk": -116.6,
       "dateKind": "result"
     }
   ],
