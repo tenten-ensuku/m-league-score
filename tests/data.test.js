@@ -86,6 +86,29 @@ test('real September 22 average-only discrepancy uses verified official placemen
   }
 });
 
+test('out-of-range Kinma average reaches reconciliation but never canonical data', () => {
+  const page = load(incidentKinma);
+  const row = page('tr').filter((_, tr) => page(tr).text().includes('鈴木たろう'));
+  assert.equal(row.length, 1);
+  row.children('td,th').last().text('32.88');
+  const k = parseKinma(page.html(), config, 'regular', config.stages.regular.kinmaUrl);
+  assert.equal(k.players.find(p => p.name === '鈴木たろう').avg, 32.88);
+  assert.throws(() => validatePlayers(k.players, config.players), /Invalid average/);
+  const o = parseOfficial(incidentOfficial, config, 'regular');
+  const warnings = [];
+  const rows = reconcile(k, o, { warnings });
+  validatePlayers(rows, config.players, { requireAll: true });
+  assert.match(warnings.join('\n'), /鈴木たろう.*32.88/);
+  for (const field of ['score', 'games']) {
+    const altered = structuredClone(k);
+    altered.players.find(p => p.name === '鈴木たろう')[field]++;
+    assert.throws(() => reconcile(altered, o), /Sources disagree/);
+  }
+  const altered = structuredClone(o);
+  altered.players.find(p => p.name === '鈴木たろう').placements = undefined;
+  assert.throws(() => reconcile(k, altered), /Unverified official average/);
+});
+
 test('official daily results recover every missed day without changing existing snapshots', async t => {
   const dir = tempRepo(t);
   const next = await collect({ root: dir, fetcher: incidentFetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true, recoverHistory: true });
