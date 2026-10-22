@@ -41,7 +41,7 @@ async function main() {
       await page.screenshot({ path: path.join(out, `teams-${width}.png`), fullPage: true });
       await page.screenshot({ path: path.join(out, `first-screen-${width}.png`) });
       await page.locator('#source-button').click();
-      await expect(page.locator('#source-content')).toContainText('自動取得予定: 火・水・金・土 2:07、2:37、3:07、3:37、6:07 JST');
+      await expect(page.locator('#source-content')).toContainText('自動取得予定: 火・水・金・土 2:07、2:37、3:07、3:37、および毎日 6:07 JST');
       await expect(page.locator('#source-content')).toContainText('遅れる場合があります');
       for (const warning of active.warnings || []) await expect(page.locator('#source-content')).toContainText(warning);
       await expect(page.getByRole('link', { name: '自動更新の実行状況' })).toHaveAttribute('href', 'https://github.com/tenten-ensuku/m-league-score/actions/workflows/update.yml');

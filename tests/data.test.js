@@ -150,6 +150,44 @@ test('warning recovery does not reset score dates, history or previous-match del
   assert.equal(corrected.resultDate, next.resultDate);
 });
 
+test('inconsistent secondary standings require exact official match-ledger recovery', async t => {
+  const dir = tempRepo(t);
+  const malformed = load(incidentKinma);
+  const row = malformed('tr').filter((_, tr) => malformed(tr).text().includes('鈴木たろう'));
+  row.children('td,th').eq(3).text('999');
+  const fetcher = async url => url === config.stages.regular.kinmaUrl ? malformed.html() : incidentFetcher(url);
+  const options = { root: dir, fetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true };
+  const next = await collect(options);
+  assert.equal(next.resultDate, '2026-09-22');
+  assert.equal(next.history.length, 7);
+  assert.deepEqual(next.history.slice(0, original.history.length), original.history);
+  assert.match(next.warnings.join(''), /全選手のPT・試合数・着順回数/);
+  assert.ok(next.stages.regular.sources.some(s => s.url === GAMES_URL));
+  writeJSON(path.join(dir, 'data/seasons/2026-27.json'), next);
+  const repeated = await collect(options);
+  assert.deepEqual(repeated.history, next.history);
+  assert.equal(repeated.updatedAt, next.updatedAt);
+
+  const freshDir = tempRepo(t);
+  const corrupt = load(incidentGames);
+  corrupt('#js-modal-key20260921-6 .p-gamesResult__point').first().text('102.0pt');
+  await assert.rejects(collect({ ...options, root: freshDir, fetcher: async url => url === GAMES_URL ? corrupt.html() : fetcher(url) }), /Invalid match result/);
+  assert.deepEqual(readJSON(path.join(freshDir, 'data/seasons/2026-27.json')), original);
+  const unknown = malformed.html().replaceAll('鈴木たろう', '未知の選手');
+  await assert.rejects(collect({ ...options, fetcher: async url => url === config.stages.regular.kinmaUrl ? unknown : incidentFetcher(url) }), /Unknown/);
+});
+
+test('secondary point mismatch cannot publish when official ledger disagrees', async t => {
+  const dir = tempRepo(t);
+  const secondary = load(incidentKinma);
+  secondary('tr').filter((_, tr) => secondary(tr).text().includes('鈴木たろう')).children('td,th').eq(2).text('999');
+  const missing = load(incidentGames);
+  missing('#js-modal-key20260921-6').remove();
+  const fetcher = async url => url === GAMES_URL ? missing.html() : url === config.stages.regular.kinmaUrl ? secondary.html() : incidentOfficial;
+  await assert.rejects(collect({ root: dir, fetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true }), /disagrees with standings/);
+  assert.deepEqual(readJSON(path.join(dir, 'data/seasons/2026-27.json')), original);
+});
+
 test('game counts may grow but never disappear or go backwards', () => {
   const a = official();
   const b = official();

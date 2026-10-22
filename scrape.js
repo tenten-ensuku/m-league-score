@@ -6,6 +6,7 @@ const config = require('./config/season');
 const { fetchText, officialURL, parseOfficial, parseKinma, reconcile } = require('./lib/sources');
 const { readJSON, readAssignment, writeJSON, fingerprint } = require('./lib/store');
 const { STAGES, aggregate, validateDraft, validateSeason, validateProgress, snapshot, updateHistory, jstDate } = require('./lib/model');
+const { recoverRegularHistory, latestResultDate, GAMES_URL } = require('./lib/recovery');
 
 async function collect({ root = __dirname, fetcher = fetchText, now = new Date(), initialize = false, dryRun = false, recoverHistory = false } = {}) {
   const statePath = path.join(root, `data/seasons/${config.id}.json`);
@@ -30,6 +31,7 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   const stages = {};
   const warnings = [];
   const observedAt = now.toISOString();
+  let verifiedHistory;
   for (const key of STAGES) {
     const definition = config.stages[key];
     if (!regular.available[key]) {
@@ -43,12 +45,26 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
     let resultDate = null;
     const sources = [{ name: 'Mリーグ公式', url: official.source }];
     if (definition.kinmaUrl) {
-      const kinma = parseKinma(await fetcher(definition.kinmaUrl), config, key, definition.kinmaUrl);
-      const stageWarnings = [];
-      players = reconcile(kinma, official, { warnings: stageWarnings });
-      warnings.push(...stageWarnings.map(warning => `${definition.label}: ${warning}`));
-      resultDate = kinma.resultDate;
-      sources.unshift({ name: 'キンマweb', url: definition.kinmaUrl });
+      try {
+        const kinma = parseKinma(await fetcher(definition.kinmaUrl), config, key, definition.kinmaUrl);
+        const stageWarnings = [];
+        players = reconcile(kinma, official, { warnings: stageWarnings });
+        warnings.push(...stageWarnings.map(warning => `${definition.label}: ${warning}`));
+        resultDate = kinma.resultDate;
+        sources.unshift({ name: 'キンマweb', url: definition.kinmaUrl });
+      } catch (error) {
+        // Only known numeric inconsistencies can use the independently verified match ledger.
+        if (key !== 'regular' || previous?.activeStage !== 'regular' || regular.available.semi || !/^(Sources disagree:|Incomplete match:)/.test(error.message)) throw error;
+        const html = await fetcher(GAMES_URL);
+        resultDate = latestResultDate(html);
+        if (resultDate > jstDate(now)) throw new Error('Source result date is in the future');
+        const candidate = { ...previous, resultDate, dateKind: 'result', updatedAt: observedAt,
+          stages: { ...previous.stages, regular: { players: official.players } } };
+        const unchanged = resultDate === previous.resultDate && fingerprint(official.players) === fingerprint(previous.stages.regular.players);
+        verifiedHistory = unchanged ? previous.history : recoverRegularHistory(previous, candidate, html);
+        warnings.push(`${definition.label}: キンマwebの数値が公式累計と整合しないため、公式の試合別結果を積み上げ、全選手のPT・試合数・着順回数が公式累計と一致することを確認して採用しています。`);
+        sources.push({ name: 'Mリーグ公式・試合別結果', url: GAMES_URL });
+      }
     }
     if (resultDate && resultDate > jstDate(now)) throw new Error('Source result date is in the future');
     stages[key] = { players, sources, resultDate, observedAt, status: players.some(p => p.games) ? 'started' : 'pending' };
@@ -82,8 +98,9 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   const newSnapshot = snapshot(resultDate, players, draftFile.teams, observedAt);
   newSnapshot.dateKind = active.resultDate ? 'result' : 'observed';
   const next = { schemaVersion: 2, id: config.id, status: 'active', activeStage, updatedAt: observedAt, resultDate, dateKind: newSnapshot.dateKind, roster: config.players, teams: config.teams.map(({ names, ...t }) => t), draft: draftFile.teams, draftSource: { url: draftFile.source, revision: draftFile.revision, updatedAt: draftFile.updatedAt }, stages, players, history: updateHistory(history, newSnapshot), warnings };
-  if (recoverHistory) {
-    const { recoverRegularHistory, GAMES_URL } = require('./lib/recovery');
+  if (verifiedHistory) {
+    next.history = verifiedHistory;
+  } else if (recoverHistory || (previous?.activeStage === 'regular' && activeStage === 'regular' && previous.resultDate < resultDate)) {
     next.history = recoverRegularHistory(previous, next, await fetcher(GAMES_URL));
   }
   validateSeason(next);
