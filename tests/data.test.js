@@ -61,7 +61,22 @@ test('source disagreement stops instead of substituting zeros or stale points', 
 const incidentOfficial = fs.readFileSync(path.join(__dirname, 'fixtures/official-2026-09-22.html'), 'utf8');
 const incidentKinma = fs.readFileSync(path.join(__dirname, 'fixtures/kinma-2026-09-22.html'), 'utf8');
 const incidentGames = fs.readFileSync(path.join(__dirname, 'fixtures/games-2026-09-22.html'), 'utf8');
-const { GAMES_URL, recoverRegularHistory } = require('../lib/recovery');
+const { GAMES_URL, recoverRegularHistory, validateMatchRows } = require('../lib/recovery');
+
+test('tied official ranks are accepted only for equal points in the correct order', () => {
+  const rows = [
+    { name: 'A', rank: 1, score: 56.7 }, { name: 'B', rank: 2, score: 8.7 },
+    { name: 'C', rank: 3, score: -32.7 }, { name: 'D', rank: 3, score: -32.7 },
+  ];
+  const known = new Set(rows.map(p => p.name));
+  assert.doesNotThrow(() => validateMatchRows(rows, known, 'tie'));
+  for (const bad of [
+    rows.map((p, i) => i === 3 ? { ...p, rank: 4 } : p),
+    rows.map((p, i) => i === 2 ? { ...p, score: -32.6 } : i === 3 ? { ...p, score: -32.8 } : p),
+    [rows[0], rows[2], rows[1], rows[3]],
+    rows.map((p, i) => i === 3 ? { ...p, name: 'unknown' } : p),
+  ]) assert.throws(() => validateMatchRows(bad, known, 'invalid'), /Invalid match result/);
+});
 const incidentFetcher = async url => url === GAMES_URL ? incidentGames : url === config.stages.regular.kinmaUrl ? incidentKinma : incidentOfficial;
 
 test('real September 22 average-only discrepancy uses verified official placements', () => {

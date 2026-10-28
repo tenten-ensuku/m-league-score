@@ -308,6 +308,46 @@ window.MLEAGUE_HISTORY = [
         "js-modal-key20261023-44/2"
       ]
     }
+  },
+  {
+    "date": "2026-10-26",
+    "observedAt": "2026-10-28T01:15:23.243Z",
+    "ten_pt": 478.5,
+    "ten_bk": 1192.3,
+    "aji_pt": -193.7,
+    "aji_bk": -824.3,
+    "sat_pt": -41.6,
+    "sat_bk": -368,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://m-league.jp/games/",
+      "matchIds": [
+        "js-modal-key20261026-45/1",
+        "js-modal-key20261026-45/2",
+        "js-modal-key20261026-46/1",
+        "js-modal-key20261026-46/2"
+      ]
+    }
+  },
+  {
+    "date": "2026-10-27",
+    "observedAt": "2026-10-28T01:15:23.243Z",
+    "ten_pt": 537.3,
+    "ten_bk": 1214.9,
+    "aji_pt": -142.1,
+    "aji_bk": -823.3,
+    "sat_pt": 1.8,
+    "sat_bk": -391.6,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://m-league.jp/games/",
+      "matchIds": [
+        "js-modal-key20261027-47/1",
+        "js-modal-key20261027-47/2",
+        "js-modal-key20261027-48/1",
+        "js-modal-key20261027-48/2"
+      ]
+    }
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-10-23";
+window.MLEAGUE_HISTORY_UPDATED = "2026-10-27";
