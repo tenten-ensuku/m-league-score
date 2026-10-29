@@ -5,8 +5,8 @@ on:
     # Tue/Wed/Fri/Sat 02:07, 02:37, 03:07, 03:37 JST; avoid the busy hour boundary.
     # GitHub schedules are best-effort, so retry both delayed starts and source updates.
     - cron: '7,37 17,18 * * 1,2,4,5'
-    # Daily 06:07 JST also catches late publications on non-match days.
-    - cron: '7 21 * * *'
+    # Daily 06:07, 12:07 and 18:07 JST retry after delayed results or maintenance.
+    - cron: '7 3,9,21 * * *'
   workflow_dispatch:
 
 permissions:

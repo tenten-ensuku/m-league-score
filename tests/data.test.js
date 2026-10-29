@@ -36,6 +36,7 @@ test('name variants and strict numeric parsing preserve HIRO', () => {
 });
 
 test('wrong season, mislabeled phase and absent ranking table fail closed', () => {
+  assert.throws(() => parseOfficial('<html><head><title>Mリーグ公式サイト メンテナンスのお知らせ</title></head><body><h1>メンテナンス中</h1></body></html>', config, 'regular'), /公式サイトはメンテナンス中/);
   assert.throws(() => parseOfficial(officialHTML.replace('2026-27', '2025-26'), config, 'regular'), /different season/);
   assert.throws(() => parseOfficial(officialHTML, config, 'semi'), /wrong phase/);
   assert.throws(() => parseKinma(kinmaHTML.replaceAll('2026-27', '2025-26').replace('202-27', '2025-26'), config, 'regular', config.stages.regular.kinmaUrl), /another season/);
