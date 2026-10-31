@@ -348,6 +348,36 @@ window.MLEAGUE_HISTORY = [
         "js-modal-key20261027-48/2"
       ]
     }
+  },
+  {
+    "date": "2026-10-29",
+    "observedAt": "2026-10-31T02:26:59.070Z",
+    "ten_pt": 449.6,
+    "ten_bk": 938.7,
+    "aji_pt": -129,
+    "aji_bk": -797.1,
+    "sat_pt": 89.5,
+    "sat_bk": -141.6,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://kinmaweb.jp/2026-10-result",
+      "provisional": true
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "observedAt": "2026-10-31T02:26:59.070Z",
+    "ten_pt": 503.3,
+    "ten_bk": 1082,
+    "aji_pt": -148.2,
+    "aji_bk": -872.5,
+    "sat_pt": 72.8,
+    "sat_bk": -209.5,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://kinmaweb.jp/2026-10-result",
+      "provisional": true
+    }
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-10-27";
+window.MLEAGUE_HISTORY_UPDATED = "2026-10-30";

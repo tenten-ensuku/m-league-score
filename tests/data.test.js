@@ -80,6 +80,54 @@ test('tied official ranks are accepted only for equal points in the correct orde
 });
 const incidentFetcher = async url => url === GAMES_URL ? incidentGames : url === config.stages.regular.kinmaUrl ? incidentKinma : incidentOfficial;
 
+function kinmaDailyFixture() {
+  const $ = load(incidentGames);
+  return $('.p-gamesResult').toArray().map(result => {
+    const id = $(result).closest('.c-modal2').attr('id');
+    const match = id?.match(/^js-modal-key(\d{4})(\d{2})(\d{2})-/);
+    if (!match) return '';
+    const rounds = $(result).find('.p-gamesResult__column').toArray().map((col, index) => {
+      const rows = $(col).find('.p-gamesResult__rank-item').toArray().map(row => `<tr><th>${$(row).find('.p-gamesResult__rank-badge').text().trim()}着</th><td><a>${$(row).find('.p-gamesResult__name').text().trim()}</a></td><td>${$(row).find('.p-gamesResult__point').text().trim()}</td></tr>`).join('');
+      return `<tr><th>第${index + 1}試合</th></tr>${rows}`;
+    }).join('');
+    return `<h2>${match[1]}年${Number(match[2])}月${Number(match[3])}日</h2><table class="m_league_dailyscore">${rounds}</table>`;
+  }).join('');
+}
+
+test('maintenance uses Kinma daily ledger and reconciles provisional history with official restoration', async t => {
+  const dir = tempRepo(t);
+  const monthly = kinmaDailyFixture();
+  const maintenance = '<html><title>メンテナンス</title><h1>メンテナンス中</h1></html>';
+  const fetcher = async url => url === config.stages.regular.kinmaUrl ? incidentKinma : url.includes('-result') ? monthly : maintenance;
+  const options = { root: dir, fetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true };
+  const interim = await collect(options);
+  assert.equal(interim.resultDate, '2026-09-22');
+  assert.deepEqual(interim.history.slice(0, original.history.length), original.history);
+  assert.equal(interim.history.length, 7);
+  assert.equal(interim.pendingOfficial.resultDate, original.resultDate);
+  writeJSON(path.join(dir, 'data/seasons/2026-27.json'), interim);
+  const repeated = await collect(options);
+  assert.deepEqual(repeated.history, interim.history);
+  assert.equal(repeated.updatedAt, interim.updatedAt);
+  const restored = await collect({ ...options, fetcher: incidentFetcher });
+  assert.equal(restored.pendingOfficial, undefined);
+  assert.equal(restored.resultDate, interim.resultDate);
+  assert.deepEqual(restored.history.map(r => r.date), interim.history.map(r => r.date));
+  const altered = structuredClone(interim);
+  altered.stages.regular.players[0].score += 0.1;
+  altered.players = aggregate(altered.roster, altered.stages);
+  const last = altered.history.at(-1);
+  altered.history[altered.history.length - 1] = { ...snapshot(last.date, altered.players, altered.draft, last.observedAt), dateKind: 'result', recovery: last.recovery };
+  writeJSON(path.join(dir, 'data/seasons/2026-27.json'), altered);
+  const corrected = await collect({ ...options, fetcher: incidentFetcher });
+  assert.deepEqual(corrected.sourceCorrections[0].previousSnapshots, [altered.history.at(-1)]);
+  assert.deepEqual(corrected.history.at(-1).players, restored.history.at(-1).players);
+  const broken = monthly.replace('2026年9月21日', '2026年8月21日');
+  const fresh = tempRepo(t);
+  await assert.rejects(collect({ ...options, root: fresh, fetcher: async url => url === config.stages.regular.kinmaUrl ? incidentKinma : url.includes('-result') ? broken : maintenance }), /disagree|another month|Invalid/);
+  assert.deepEqual(readJSON(path.join(fresh, 'data/seasons/2026-27.json')), original);
+});
+
 test('real September 22 average-only discrepancy uses verified official placements', () => {
   const k = parseKinma(incidentKinma, config, 'regular', config.stages.regular.kinmaUrl);
   const o = parseOfficial(incidentOfficial, config, 'regular');

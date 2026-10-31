@@ -7,13 +7,14 @@ const { fetchText, officialURL, parseOfficial, parseKinma, reconcile } = require
 const { readJSON, readAssignment, writeJSON, fingerprint } = require('./lib/store');
 const { STAGES, aggregate, validateDraft, validateSeason, validateProgress, snapshot, updateHistory, jstDate } = require('./lib/model');
 const { recoverRegularHistory, latestResultDate, GAMES_URL } = require('./lib/recovery');
+const { recoverFromKinma } = require('./lib/kinma-recovery');
 
 async function collect({ root = __dirname, fetcher = fetchText, now = new Date(), initialize = false, dryRun = false, recoverHistory = false } = {}) {
   const statePath = path.join(root, `data/seasons/${config.id}.json`);
   const exists = fs.existsSync(statePath);
   if (!exists && !initialize) throw new Error('Season state missing. Use --init only when creating a reviewed new season.');
   if (exists && initialize) throw new Error('Season already exists; --init cannot reset it.');
-  const previous = exists ? validateSeason(readJSON(statePath)) : null;
+  let previous = exists ? validateSeason(readJSON(statePath)) : null;
   if (previous && previous.id !== config.id) throw new Error('Stored season ID differs from the active configuration');
   const seasonFolder = path.join(root, 'data/seasons');
   for (const file of fs.existsSync(seasonFolder) ? fs.readdirSync(seasonFolder) : []) {
@@ -26,8 +27,35 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   if (draftFile.season !== config.id) throw new Error('Draft belongs to another season');
   validateDraft(draftFile.teams, config.players);
   if (previous && fingerprint(previous.draft) !== fingerprint(draftFile.teams)) throw new Error('Locked draft roster changed; review a roster migration');
-  const regularHtml = await fetcher(officialURL(config.stages.regular.officialId));
-  const regular = parseOfficial(regularHtml, config, 'regular');
+  let regular;
+  try {
+    regular = parseOfficial(await fetcher(officialURL(config.stages.regular.officialId)), config, 'regular');
+  } catch (error) {
+    if (!/メンテナンス中|^HTTP 5\d\d:|^fetch failed$|timed out/i.test(error.message) && error.name !== 'TimeoutError') throw error;
+    const observedAt = now.toISOString();
+    const recovered = await recoverFromKinma(previous, config, fetcher, observedAt);
+    if (recovered.resultDate > jstDate(now)) throw new Error('Source result date is in the future');
+    const stages = { ...previous.stages, regular: { ...previous.stages.regular, players: recovered.players,
+      resultDate: recovered.resultDate, observedAt, sources: [{ name: 'キンマweb・個人成績', url: config.stages.regular.kinmaUrl }, ...recovered.monthlySources.map(url => ({ name: 'キンマweb・試合結果', url }))] } };
+    const unchanged = fingerprint(stages.regular.players) === fingerprint(previous.stages.regular.players);
+    const pendingOfficial = previous.pendingOfficial || { resultDate: previous.resultDate, historyLength: previous.history.length, regular: previous.stages.regular };
+    const warnings = ['公式サイトの成績を取得できないため、キンマwebの試合結果と個人成績を照合して暫定表示しています。公式復旧後に再照合します。'];
+    if (recovered.corrected.length) warnings.push(`キンマwebの試合数の表記を試合結果で照合しました: ${recovered.corrected.join('、')}`);
+    const next = { ...previous, stages, players: aggregate(config.players, stages), history: recovered.history,
+      resultDate: recovered.resultDate, updatedAt: unchanged ? previous.updatedAt : observedAt, dateKind: 'result', warnings, pendingOfficial };
+    validateSeason(next);
+    if (!dryRun) { writeJSON(statePath, next); require('./scripts/build').build(root); }
+    console.log(`${dryRun ? 'Validated' : 'Saved'} ${next.id}, ${next.history.length} history snapshots, as of ${next.resultDate}; Kinma provisional`);
+    return next;
+  }
+  const publishedPrevious = previous;
+  if (previous?.pendingOfficial) {
+    const base = previous.pendingOfficial;
+    if (!Number.isInteger(base.historyLength) || base.historyLength < 1 || previous.history[base.historyLength - 1]?.date !== base.resultDate) throw new Error('Invalid provisional history baseline');
+    const stages = { ...previous.stages, regular: base.regular };
+    previous = { ...previous, resultDate: base.resultDate, history: previous.history.slice(0, base.historyLength), stages, players: aggregate(config.players, stages) };
+    validateSeason(previous);
+  }
   const stages = {};
   const warnings = [];
   const observedAt = now.toISOString();
@@ -103,6 +131,21 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   } else if (recoverHistory || (previous?.activeStage === 'regular' && activeStage === 'regular' && previous.resultDate < resultDate)) {
     next.history = recoverRegularHistory(previous, next, await fetcher(GAMES_URL));
   }
+  if (publishedPrevious?.pendingOfficial) {
+    validateProgress(publishedPrevious.stages.regular, next.stages.regular);
+    const provisionalRows = publishedPrevious.history.slice(publishedPrevious.pendingOfficial.historyLength);
+    const changes = [];
+    for (const old of provisionalRows) {
+      const index = next.history.findIndex(row => row.date === old.date);
+      if (index < 0) throw new Error(`Previously observed result missing: ${old.date}`);
+      if (fingerprint(old.players) === fingerprint(next.history[index].players)) next.history[index] = old;
+      else changes.push(old);
+    }
+    if (changes.length) {
+      next.sourceCorrections = [...(publishedPrevious.sourceCorrections || []), { correctedAt: observedAt, source: 'Mリーグ公式', previousSnapshots: changes }];
+      next.warnings.push('公式成績との差を修正しました。以前の暫定履歴は訂正記録として保存しています。');
+    } else if (publishedPrevious.sourceCorrections) next.sourceCorrections = publishedPrevious.sourceCorrections;
+  } else if (previous?.sourceCorrections) next.sourceCorrections = previous.sourceCorrections;
   validateSeason(next);
   if (!dryRun) {
     // Commit the canonical season and all snapshots as one atomic replacement.
