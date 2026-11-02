@@ -7,7 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { load } = require('cheerio');
 const config = require('../config/season');
-const { parseOfficial, parseKinma, reconcile, number } = require('../lib/sources');
+const { parseOfficial, parseOfficialAPI, parseKinma, reconcile, number, officialDataURL } = require('../lib/sources');
 const { STAGES, normalizeName, aggregate, teamTotals, validateSeason, validatePlayers, validateProgress, snapshot, updateHistory, jstDate } = require('../lib/model');
 const { readJSON, readAssignment, writeJSON, fingerprint, assertClean } = require('../lib/store');
 const { withDeltas } = require('../scripts/build');
@@ -79,6 +79,52 @@ test('tied official ranks are accepted only for equal points in the correct orde
   ]) assert.throws(() => validateMatchRows(bad, known, 'invalid'), /Invalid match result/);
 });
 const incidentFetcher = async url => url === GAMES_URL ? incidentGames : url === config.stages.regular.kinmaUrl ? incidentKinma : incidentOfficial;
+
+function officialAPIData() {
+  const source = parseOfficial(incidentOfficial, config, 'regular');
+  const names = ['試合数', 'ポイント', '平着', '1位', '2位', '3位', '4位'];
+  const teams = config.teams.map(team => {
+    const players = team.names.map(name => source.players.find(p => p.name === name));
+    const vals = p => [p.games, p.score, p.avg ?? 0, ...p.placements];
+    return { players: players.map(p => p.name), metrics: names.map((name, i) => ({ name, values: players.map(p => vals(p)[i]) })) };
+  });
+  return { stale: false, season: { id: config.stages.regular.officialId, name: config.id, phase: 'regular' }, seasons: [{ id: config.stages.regular.officialId, phase: 'regular' }], stats: { teams } };
+}
+
+function officialGamesAPIData() {
+  const $ = load(incidentGames);
+  const games = [];
+  $('.p-gamesResult').each((_, result) => {
+    const m = $(result).closest('.c-modal2').attr('id')?.match(/^js-modal-key(\d{4})(\d{2})(\d{2})-(\d+)$/);
+    if (!m) return;
+    $(result).find('.p-gamesResult__column').each((i, column) => {
+      const players = $(column).find('.p-gamesResult__rank-item').toArray().map(row => ({ name: $(row).find('.p-gamesResult__name').text().trim(), point: number($(row).find('.p-gamesResult__point').text(), 'fixture'), rank: number($(row).find('.p-gamesResult__rank-badge').text(), 'fixture') }));
+      games.push({ id: `${config.stages.regular.officialId}_${m[4]}_${i}`, date: `${m[1]}-${m[2]}-${m[3]}T00:00:00+09:00`, gameNo: games.length + 1, complete: true, players });
+    });
+  });
+  return { stale: false, season: { id: config.stages.regular.officialId, name: config.id, phase: 'regular' }, games };
+}
+
+test('official API format recovers daily history and rejects stale, missing and corrupt data', async t => {
+  const stats = officialAPIData();
+  const games = officialGamesAPIData();
+  const parsed = parseOfficialAPI(JSON.stringify(stats), config, 'regular');
+  assert.equal(parsed.players.length, 40);
+  assert.equal(parsed.players.find(p => p.name === '逢川恵夢').score, 53.9);
+  for (const bad of [{ ...stats, stale: true }, { ...stats, season: { ...stats.season, id: 'other' } }, { ...stats, stats: {} }]) assert.throws(() => parseOfficialAPI(JSON.stringify(bad), config, 'regular'));
+  const placeholder = '<button id="tab_1" role="tab" aria-selected="true"></button>';
+  const emptyGames = '<div class="c-modal2" id="js-modal-key年0000-試合番号"><div class="p-gamesResult"></div></div>';
+  const fetcher = async url => url === officialDataURL('stats') ? JSON.stringify(stats) : url === officialDataURL('games') ? JSON.stringify(games) : url === GAMES_URL ? emptyGames : url === config.stages.regular.kinmaUrl ? incidentKinma : placeholder;
+  const dir = tempRepo(t);
+  const result = await collect({ root: dir, fetcher, now: new Date('2026-09-22T17:15:00Z'), dryRun: true });
+  assert.deepEqual(result.history.map(r => r.date), ['2026-09-13', '2026-09-14', '2026-09-15', '2026-09-17', '2026-09-18', '2026-09-21', '2026-09-22']);
+  assert.deepEqual(result.history.slice(0, original.history.length), original.history);
+  for (const bad of [{ ...games, stale: true }, { ...games, games: [...games.games, games.games.at(-1)] }, { ...games, games: games.games.slice(0, -1) }]) {
+    const altered = async url => url === officialDataURL('games') ? JSON.stringify(bad) : fetcher(url);
+    await assert.rejects(collect({ root: dir, fetcher: altered, now: new Date('2026-09-22T17:15:00Z'), dryRun: true }));
+  }
+  assert.deepEqual(readJSON(path.join(dir, 'data/seasons/2026-27.json')), original);
+});
 
 function kinmaDailyFixture() {
   const $ = load(incidentGames);

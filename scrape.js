@@ -2,12 +2,20 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { load } = require('cheerio');
 const config = require('./config/season');
-const { fetchText, officialURL, parseOfficial, parseKinma, reconcile } = require('./lib/sources');
+const { fetchText, officialURL, officialDataURL, parseOfficial, parseOfficialAPI, parseKinma, reconcile } = require('./lib/sources');
 const { readJSON, readAssignment, writeJSON, fingerprint } = require('./lib/store');
 const { STAGES, aggregate, validateDraft, validateSeason, validateProgress, snapshot, updateHistory, jstDate } = require('./lib/model');
 const { recoverRegularHistory, latestResultDate, GAMES_URL } = require('./lib/recovery');
 const { recoverFromKinma } = require('./lib/kinma-recovery');
+
+async function fetchGames(fetcher) {
+  const html = await fetcher(GAMES_URL);
+  const $ = load(html);
+  if ($('.p-gamesResult').length === 1 && $('.p-gamesResult').first().closest('.c-modal2').attr('id') === 'js-modal-key年0000-試合番号') return fetcher(officialDataURL('games'));
+  return html;
+}
 
 async function collect({ root = __dirname, fetcher = fetchText, now = new Date(), initialize = false, dryRun = false, recoverHistory = false } = {}) {
   const statePath = path.join(root, `data/seasons/${config.id}.json`);
@@ -29,7 +37,10 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   if (previous && fingerprint(previous.draft) !== fingerprint(draftFile.teams)) throw new Error('Locked draft roster changed; review a roster migration');
   let regular;
   try {
-    regular = parseOfficial(await fetcher(officialURL(config.stages.regular.officialId)), config, 'regular');
+    const html = await fetcher(officialURL(config.stages.regular.officialId));
+    const $ = load(html);
+    if ($('button#tab_1[role="tab"][aria-selected="true"]').length === 1) regular = parseOfficialAPI(await fetcher(officialDataURL('stats')), config, 'regular');
+    else regular = parseOfficial(html, config, 'regular');
   } catch (error) {
     if (!/メンテナンス中|^HTTP 5\d\d:|^fetch failed$|timed out/i.test(error.message) && error.name !== 'TimeoutError') throw error;
     const observedAt = now.toISOString();
@@ -83,7 +94,7 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
       } catch (error) {
         // Only known numeric inconsistencies can use the independently verified match ledger.
         if (key !== 'regular' || previous?.activeStage !== 'regular' || regular.available.semi || !/^(Sources disagree:|Incomplete match:)/.test(error.message)) throw error;
-        const html = await fetcher(GAMES_URL);
+        const html = await fetchGames(fetcher);
         resultDate = latestResultDate(html);
         if (resultDate > jstDate(now)) throw new Error('Source result date is in the future');
         const candidate = { ...previous, resultDate, dateKind: 'result', updatedAt: observedAt,
@@ -129,7 +140,7 @@ async function collect({ root = __dirname, fetcher = fetchText, now = new Date()
   if (verifiedHistory) {
     next.history = verifiedHistory;
   } else if (recoverHistory || (previous?.activeStage === 'regular' && activeStage === 'regular' && previous.resultDate < resultDate)) {
-    next.history = recoverRegularHistory(previous, next, await fetcher(GAMES_URL));
+    next.history = recoverRegularHistory(previous, next, await fetchGames(fetcher));
   }
   if (publishedPrevious?.pendingOfficial) {
     validateProgress(publishedPrevious.stages.regular, next.stages.regular);

@@ -378,6 +378,26 @@ window.MLEAGUE_HISTORY = [
       "source": "https://kinmaweb.jp/2026-10-result",
       "provisional": true
     }
+  },
+  {
+    "date": "2026-11-02",
+    "observedAt": "2026-11-02T22:49:31.982Z",
+    "ten_pt": 521.9,
+    "ten_bk": 1208.1,
+    "aji_pt": -225.9,
+    "aji_bk": -1035.3,
+    "sat_pt": 61.6,
+    "sat_bk": -172.8,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://m-league.jp/games/",
+      "matchIds": [
+        "L001_S025_0029_01A",
+        "L001_S025_0029_01B",
+        "L001_S025_0029_02A",
+        "L001_S025_0029_02B"
+      ]
+    }
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-10-30";
+window.MLEAGUE_HISTORY_UPDATED = "2026-11-02";
