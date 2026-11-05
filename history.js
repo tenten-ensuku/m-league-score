@@ -418,6 +418,26 @@ window.MLEAGUE_HISTORY = [
         "L001_S025_0030_02B"
       ]
     }
+  },
+  {
+    "date": "2026-11-05",
+    "observedAt": "2026-11-05T22:37:47.786Z",
+    "ten_pt": 536.2,
+    "ten_bk": 1246.6,
+    "aji_pt": -168.2,
+    "aji_bk": -866.6,
+    "sat_pt": -6,
+    "sat_bk": -380,
+    "dateKind": "result",
+    "recovery": {
+      "source": "https://m-league.jp/games/",
+      "matchIds": [
+        "L001_S025_0031_01A",
+        "L001_S025_0031_01B",
+        "L001_S025_0031_02A",
+        "L001_S025_0031_02B"
+      ]
+    }
   }
 ];
-window.MLEAGUE_HISTORY_UPDATED = "2026-11-03";
+window.MLEAGUE_HISTORY_UPDATED = "2026-11-05";
