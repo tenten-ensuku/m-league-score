@@ -1,6 +1,6 @@
 # Mリーグ ドラフト成績
 
-本番: https://m-league-score.netlify.app/
+本番: https://m-league-score.pages.dev/
 
 2026-27のドラフトチーム（てん・あじ・さとし、各10名）と個人成績を表示する静的アプリです。シーズン切り替えで2025-26も参照できます。
 
@@ -12,11 +12,10 @@ npm run check
 node scrape.js
 ```
 
-`dist/index.html` はファイルを直接開いて利用できます。Netlifyの公開対象は `dist/` です。
+`dist/index.html` はファイルを直接開いて利用できます。Cloudflare Pagesの公開対象は `dist/` です。
 
 ```sh
 npm run test:browser
-netlify deploy --dir=dist --no-build
 ```
 
 ブラウザ検証はローカルのChromeを使います。CIではPlaywright Chromiumをインストールします。`TEST_URL` を指定すると、その公開URLに対して同じ検証を実行します。
@@ -61,7 +60,7 @@ netlify deploy --dir=dist --no-build
 
 2026-09-16に起動遅延を確認しました。前日の02:00予定は05:43 JSTに起動し、当日の02:00予定は03:35 JST時点で未起動でした。取得・照合は正常で、手動実行で9月15日分を反映しました。[実行履歴](https://github.com/tenten-ensuku/m-league-score/actions/workflows/update.yml)で開始時刻と結果を確認できます。急ぎの場合は同画面の「Run workflow」または `gh workflow run update.yml --repo tenten-ensuku/m-league-score --ref main` で既存の検証・公開経路を起動します。
 
-`npm ci` → テスト → 取得・照合・生成 → 正本と生成物をcommit/push → Netlifyへ一括deploy。スコアの変化がない定時実行ではdeployしません。手動実行は変化がなくてもdeployします。利用する既存Secretsは `NETLIFY_AUTH_TOKEN` と `NETLIFY_SITE_ID` です。
+`npm ci` → テスト → 取得・照合・生成 → 正本と生成物をcommit/push → Cloudflare Pagesへ一括deploy。定時実行では公開済みの `app-data.js` がビルド結果と一致すればdeployを省略します。公開に失敗した場合は次回の定時実行でも再試行します。手動実行は常にdeployします。利用するSecretsは `CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` です。
 
 失敗した実行はGitHub Actions上で確認できます。取得失敗時に新しいゼロデータを本番へ公開することはありません。シーズン終了時は `schedule` を止め、翌季は新しいIDとドラフトを追加してください。
 
